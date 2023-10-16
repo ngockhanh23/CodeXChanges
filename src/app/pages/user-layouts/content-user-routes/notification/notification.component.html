@@ -1,0 +1,72 @@
+<div class="container user-content">
+
+    <div class="main-details-content">
+        <div class="row">
+            <div class="col-lg-9" style="margin-top: 20px;">
+
+                <div class="content-list-notification">
+                    <div class="title-notification-box">
+                        <div class="row">
+                            <div class="col-lg-4 title-content">
+                                <h5>Thông báo của bạn</h5>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="lst-notification">
+                       
+
+                        <!-- item -->
+                        <div *ngFor="let item of lstNotification.slice().reverse()"  (click)="notificationNavigate(item)">
+                            <div class="notification-item row" [ngClass]="{'unread-notification': !item.status_Notification}">
+                                <div class="content-notification col-lg-8">
+                                    <div class="title-notification-title-cover">
+                                        <h5 class="title-notification">{{item.message_Content}}</h5>
+
+                                    </div>
+                                    <div *ngIf="item.type_Notification === 1">
+                                        <!-- <p>Giá code : </p> -->
+                                        <p style="margin-bottom: 0;">Biến động số dư : + {{item.balance_Alert}} xu</p>
+                                        <p>Tổng xu : {{item.total_Balance}} xu</p>
+                                    </div>
+                                    <div *ngIf="item.type_Notification === 2">
+                                        <p style="margin-bottom: 0;">Biến động số dư : - {{item.balance_Alert}} xu</p>
+                                        <p>Tổng xu : {{item.total_Balance}} xu</p>
+                                    </div>
+                                </div>
+                                <div class="left-item-notification col-lg-4">
+                                    <small>{{item.date_Notifiaction | date: 'dd/MM/yyyy HH:mm:ss'}}</small>
+                                    <div class="dot">
+                                        <div class="dot-display" *ngIf="!item.status_Notification"></div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- item -->
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+
+                <div id="left-scroll">
+                    <a href="#">
+                        <img src="https://sharecode.vn/assets/images/Ra-mat-topcode.jpg" alt=""
+                            style="height: 100%; width: 60%;">
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+</div>

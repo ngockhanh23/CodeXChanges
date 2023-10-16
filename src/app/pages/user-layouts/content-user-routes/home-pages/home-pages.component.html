@@ -1,0 +1,149 @@
+<div class="container user-content">
+    <!-- slider -->
+    <div class="row">
+        <div class="col-lg-3">
+
+            <div class="list-group">
+                <!-- <a href="#" class="list-group-item list-group-item-action ">
+                      
+                    </a> -->
+                <a [routerLink]="['/categories',item._id]" *ngFor="let item of lstCategories" class="list-group-item list-group-item-action"><span style="margin-right: 10px;"><i
+                            class="bi bi-code-slash"></i></span>{{item.category_Name}}</a>
+                
+
+                    
+
+            </div>
+        </div>
+
+        <div class="col-lg-9 slider-content">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <a href="#"><img class="d-block w-100"
+                                src="https://sharecode.vn/assets/images/share-code-1.jpg" alt="First slide"></a>
+                    </div>
+                    <div class="carousel-item">
+                        <a href="#"><img class="d-block w-100"
+                                src="https://sharecode.vn/assets/images/share-code.jpg" alt="Second slide"></a>
+                    </div>
+
+
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button"
+                    data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button"
+                    data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- end-slider -->
+
+    <div class="row service">
+        <div class="col-lg-3 service-item">
+            <div class="icon-service"><i class="bi bi-file-text"></i></div>
+            <div class="service-content">
+                <h6>CODE PHONG PHÚ</h6>
+                <p>Đầy đủ các thể loại...</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 service-item">
+            <div class="icon-service"><i class="bi bi-patch-check-fill"></i></div>
+            <div class="service-content">
+                <h6>CODE CHẤT LƯỢNG</h6>
+                <p>Cam kết hỗ trợ và liên hệ</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 service-item">
+            <div class="icon-service"><i class="bi bi-telephone"></i></div>
+            <div class="service-content">
+                <h6>Giao dịch 24/7</h6>
+                <p>Giao dịch & Download Code</p>
+            </div>
+        </div>
+
+        <div class="col-lg-3 service-item">
+            <div class="icon-service"><i class="bi bi-credit-card"></i></div>
+            <div class="service-content">
+                <h6>THANH TOÁN</h6>
+                <p>Thanh toán đảm bảo</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row main-product-content">
+        <!-- left-content -->
+        <div class="col-lg-9">
+            <div class="content-list-product">
+                <div class="title-product-box">
+                    <div class="title-content">
+                        <h3>SOUCE CODE MỚI</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <app-product-cards *ngFor="let item of lstNewCodeProduct" [codeProductItem]="item" class="col-lg-3 card-product-item"></app-product-cards>
+                </div>
+
+                <!-- <div class="pagination">
+                    <a href="#" class="prev">&laquo; Trước</a>
+                    <a href="#" class="page">1</a>
+                    <a href="#" class="page">2</a>
+                    <a href="#" class="page">3</a>
+                    <a href="#" class="next">Sau &raquo;</a>
+                </div> -->
+            </div>
+
+            <div class="content-list-product">
+                <div class="title-product-box">
+                    <div class="title-content">
+                        <h3>Tải nhiều trong tuần</h3>
+                    </div>
+                </div>
+                <div class="row">
+<!-- 
+                   <app-product-cards class="col-lg-3 card-product-item"></app-product-cards>
+                   <app-product-cards class="col-lg-3 card-product-item"></app-product-cards> -->
+
+
+                </div>
+
+
+            </div>
+        </div>
+        <!-- end-left-content -->
+
+        <!-- right-content -->
+        <div class="col-lg-3">
+            <div class="general-annoucement">
+                <div class="general-annoucement-title">
+                    <h5>Thông báo chung</h5>
+                </div>
+                <div class="general-annoucement-content">
+                    <div class="general-annoucement-list">
+
+                        <ul>
+                            <li><a href="#" class="list-group-item-action">Cách upload code</a></li>
+                            <li><a href="#" class="list-group-item-action">Mẹo giúp bạn tăng doanh thu bán
+                                    source code</a></li>
+                            <li><a href="#" class="list-group-item-action">Hướng dẫn nạp xu</a></li>
+                            <li><a href="#" class="list-group-item-action">Hướng dẫn rút tiền</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- end-right-content -->
+    </div>
+</div>

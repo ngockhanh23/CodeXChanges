@@ -1,0 +1,89 @@
+<div class="container user-content">
+
+
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="#">Code tải lên</a></li>
+        </ol>
+    </nav>
+
+    <div class="main-details-content" *ngIf="lstProductUploaded.length > 0; else emtyLstProductUploaded">
+        <div class="row">
+            <div class="col-lg-9" style="margin-top: 20px;">
+
+                <div class="content-list-product">
+                    <div class="title-product-box">
+                        <div class="row">
+                            <div class="col-lg-2 title-content">
+                                <h5>Code tải lên</h5>
+                            </div>
+
+                            <div class="col-lg-10 sort-category-item">
+
+                                <button class="btn">Tất cả</button>
+                                <button class="btn">Có phí</button>
+                                <button class="btn">Miễn phí</button>
+                                <button class="btn">Chờ duyệt</button>
+                                <button class="btn">Đã duyệt</button>
+                                <button class="btn">Bị từ chối</button>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lst-prod">
+                        <div class="row lst-prod-head">
+                            <div class="col-lg-5 row" style="align-items: center;">
+                                <!-- <div class="col-lg-3">Mã</div> -->
+                                <div class="col-lg-9">Source code</div>
+                            </div>
+                            <div class="col-lg-7 row" style="align-items: center;">
+                                <div class="col-lg-3">Phí tải</div>
+                                <div class="col-lg-2">Tải</div>
+                                <div class="col-lg-2">Xem</div>
+                                <div class="col-lg-4">Duyệt</div>
+                                <div class="col-lg-1"><i class="bi bi-gear"></i></div>
+                            </div>
+                        </div>
+
+                        <app-product-upload-item *ngFor="let item of lstProductUploaded.slice().reverse()" [prodUploadedItem]="item"></app-product-upload-item>
+                        
+                        
+
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+
+                <div id="left-scroll">
+                    <a href="#">
+                        <img src="https://sharecode.vn/assets/images/Ra-mat-topcode.jpg" alt=""
+                            style="height: 100%; width: 60%;">
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+    <ng-template #emtyLstProductUploaded>
+        <div class="main-details-content">
+            <h2>Bạn chưa upload source code nào</h2>
+        </div>
+    </ng-template>
+
+
+
+
+
+
+</div>

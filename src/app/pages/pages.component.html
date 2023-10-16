@@ -1,0 +1,19 @@
+
+    <app-header *ngIf="adminLogin == null; else adminDashboard"></app-header>
+
+    <ng-template #adminDashboard>
+        <app-admin-dashboard></app-admin-dashboard>
+    </ng-template>
+    <!-- <app-home-pages></app-home-pages> -->
+    
+    <!-- <app-categories></app-categories> -->
+    <!-- <app-product-details></app-product-details> -->
+    <!-- <app-login></app-login> -->
+    <!-- <app-register></app-register> -->
+    <!-- <app-rechage></app-rechage> -->
+    <!-- <app-user-product-uploaded-list></app-user-product-uploaded-list> -->
+    <!-- <app-upload-products-page></app-upload-products-page> -->
+    <router-outlet></router-outlet>
+
+    <app-footer *ngIf="adminLogin == null"></app-footer>
+

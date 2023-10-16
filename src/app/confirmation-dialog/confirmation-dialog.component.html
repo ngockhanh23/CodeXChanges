@@ -1,0 +1,13 @@
+<div class="confirm-box">
+
+<div class="modal-body" mat-dialog-content>
+  <h5>
+  {{ data.message }}
+  </h5>
+</div>
+<div class="modal-footer" mat-dialog-actions>
+  <button type="button" class="btn btn-danger" (click)="onNoClick()">{{data.cancelText}}</button>
+  <button type="button" class="btn btn-success" (click)="onYesClick()">{{data.okText}}</button>
+</div>
+
+</div>

@@ -1,0 +1,6 @@
+.link-edit{
+    cursor: pointer;
+}
+.link-edit:hover{
+    opacity: 1;
+}

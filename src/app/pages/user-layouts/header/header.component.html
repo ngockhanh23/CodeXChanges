@@ -1,0 +1,153 @@
+<!-- header -->
+<div class="header">
+    <div class="container-fluid head-barner">
+        <div class="container">
+            <a href="">
+                <img style="width: 100%;" class="head-barner-img" src="https://sharecode.vn/assets/images/thiet-ke-website.jpg"
+                    alt="">
+            </a>
+        </div>
+    </div>
+    <div class="container-fluid header-information"></div>
+
+    <div class="container-fluit header-bar">
+        <div class="container header-content">
+            <div class="row">
+                <div class="col-lg-3 logo-header">
+                    <a href="/">
+                        <img class="logo"
+                            src="assets/img/logo.png"
+                            alt="logo">
+                    </a>
+                </div>
+                <div class="col-lg-4">
+                    <form action="#" class="search-form">
+                        <input type="text" class="form-control search-box" placeholder="Tìm kiếm source code">
+                        <button class="btn search-button"><i class="bi bi-search"></i></button>
+                    </form>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="header-option">
+                        <button [routerLink]="['/recharge']" class="btn btn-header-option"><i class="bi bi-coin"
+                                style="margin-top: 20px; margin-right: 5px;"></i>Nạp xu</button>
+
+                        <button [routerLink]="['/upload-product-user']" class="btn btn-header-option"><i class="bi bi-cloud-upload"
+                                style="margin-top: 20px; margin-right: 5px;"></i>Upload Code</button>
+
+                    </div>
+                    
+                </div>
+                <div class="col-lg-2">
+                   
+
+
+
+                    <div class="header-option" *ngIf="userLogin === null; else LoginExistingTemplate">
+                        <a [routerLink]="['/login']" class="login-link"><i class="bi bi-person"
+                                style="margin-top: 20px; margin-right: 5px;"></i>Đăng nhập</a>
+                    </div> 
+
+                    <ng-template #LoginExistingTemplate>
+                        <div class="header-option">
+
+                        <div class="dropdown item user-loged">
+                            <a data-toggle="dropdown">
+
+                                <div class="avatar-user-logged">
+                                    <img [src]="userLogin.avatar_Url"
+                                        class="user-avatar" />
+                                </div>
+                                <span class="count-notification mark-notification" *ngIf="countUnreadNoti > 0">{{countUnreadNoti}}</span>
+
+                                <div class="name-user-logged">
+                                    <span>{{userLogin.name}} - {{userLogin.coin_Balance}} Xu</span>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu user-button" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item user-item" href="#"><i class="bi bi-person-fill"></i>
+                                    Thông tin tài khoản</a>
+                                    <a class="dropdown-item user-item" [routerLink]="['/notification']"><i class="bi bi-bell"></i>
+                                        Thông báo
+                                         <span class="count-notification" *ngIf="countUnreadNoti > 0">{{countUnreadNoti}}</span>
+                                    </a>
+                                <a class="dropdown-item user-item" [routerLink]="['/get-products-upload-user']"><i class="bi bi-cloud-upload"></i>
+                                    Code tải lên
+                                    <!-- <span class="count-notification">2</span> -->
+                                </a>
+                                
+                                <a class="dropdown-item user-item" href="#"><i class="bi bi-bookmark"></i>Code đã lưu</a>
+                                <a class="dropdown-item user-item" [routerLink]="['/get-users-bought-product-list']"><i class="bi bi-download"></i>Code đã mua</a>
+                                <a class="dropdown-item user-item" href="#"><i class="bi bi-bar-chart"></i>Doanh thu bán code</a>
+                                
+                                <a class="dropdown-item user-item" href="#"><i class="bi bi-hourglass"></i>Lịch sử nạp tiền</a>
+                                <a class="dropdown-item user-item" href="#"><i class="bi bi-coin"></i>Nạp tiền</a>
+
+                                <a class="dropdown-item user-item" href="#"><i class="bi bi-cash"></i>Rút tiền -
+                                    {{userLogin.coin_Balance}} xu</a>
+                                <a class="dropdown-item user-item" (click)="logOut()"><i
+                                        class="bi bi-box-arrow-right"></i>Đăng xuất</a>
+
+
+                            </div>
+                        </div>
+                    </div>
+                    </ng-template>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- end-header -->
+<!-- nav-bar -->
+<div class="container">
+    <div class="row nav-content">
+        <div class="dropdown col-lg-3">
+            <button class="btn btn-category" data-toggle="dropdown">
+                <i class="bi bi-list"></i>Danh mục tìm kiếm</button>
+            <div class="dropdown-menu dropdown-cate" aria-labelledby="dropdownMenuButton">
+                <!-- <a class="dropdown-item" href="category.html">PHP & MySql</a>
+                <a class="dropdown-item" href="category.html">Android</a>
+                <a class="dropdown-item" href="category.html">Asp/Asp.Net</a>
+                <a class="dropdown-item" href="category.html  ">Java/JSP</a> -->
+                <a [routerLink]="['/categories',item._id]" *ngFor="let item of lstCategories" class="dropdown-item">{{item.category_Name}}</a>
+            </div>
+        </div>
+
+        <nav class="col-lg-9 navbar navbar-expand-lg navbar-light ">
+
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Top code</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Code chất lượng</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Code tham khảo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Code miễn phí</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dịch vụ
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="#">Cài đặt websibe</a>
+                            <a class="dropdown-item" href="#">Thiết kế websibe</a>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+<!-- end-nar-bar -->

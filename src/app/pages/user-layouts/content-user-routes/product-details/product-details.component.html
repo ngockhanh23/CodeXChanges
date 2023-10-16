@@ -1,0 +1,417 @@
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="#">{{codeProd.category.category_Name}}</a></li>
+            <li class="breadcrumb-item"><a href="#">{{codeProd.code_Title}}</a></li>
+
+        </ol>
+    </nav>
+
+    <div class="main-details-content">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="img-details">
+                            <img [src]="codeProd.avatar_Url" alt="">
+                        </div>
+                        <div class="more-img-details-link">
+                            <a href="#"><i class="bi bi-images"></i>&emsp;Xem thêm ảnh</a>
+                        </div>
+
+                        <div class="btn-demo-details">
+                            <button class="btn"><i class="bi bi-play-btn"></i>&emsp;XEM VIDEO DEMO</button>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="main-title-details">
+                            <h2>{{codeProd.code_Title}}</h2>
+                        </div>
+                        <div class="price-details">
+                            <span class="price-title-details">Phí tải:</span>&emsp;
+                            <span class="price-details">{{codeProd.download_Price}} Xu</span>
+                            <small>(1 xu = 1000đ)</small>
+
+                        </div>
+                        <hr>
+                        <div class="main-rating-details">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <span>Đánh giá: </span>
+                                    <!-- &emsp; -->
+                                    
+
+                                    <span class="rating rating-average-card">
+                                        <span *ngFor="let star of [1, 2, 3, 4, 5]" class="star">
+                                          <span class="bi" [ngClass]="{'bi-star-fill': star <= ratingAverages, 'bi-star-half': star - ratingAverages > 0 &&star - ratingAverages < 1 , 'bi-star':  star >= ratingAverages + 1}"></span>
+                                        </span>
+                                    </span>
+
+                                  
+                                    <small> ({{codeProd.comments.length}} Đánh giá)</small>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="count-details-users">
+                                        <div class="count-details-users-item">
+                                            <span style="margin-right: 5px;"><i class="bi bi-download"></i></span>
+                                            <span>{{codeProd.number_Of_Download}}</span>
+                                        </div>
+
+                                        <div class="count-details-users-item">
+                                            <span style="margin-right: 5px;"><i class="bi bi-eye-fill"></i></span>
+                                            <span>{{codeProd.number_Of_View}}</span>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="top-detail-des row">
+                            <div class="col-lg-8">
+                                <table>
+
+                                    <tbody>
+                                        <tr>
+                                            <td style="color: gray;">Danh mục</td>
+                                            <td style="padding-left: 20px;"><a
+                                                    href="#">{{codeProd.category.category_Name}}</a></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td style="color: gray;">Nhóm code</td>
+                                            <td style="padding-left: 20px;"><a href="#">{{codeProd.product_Group}}</a>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td style="color: gray;">Ngày đăng</td>
+                                            <td style="padding-left: 20px;">{{codeProd.upload_Date | date:'dd/MM/yyyy'
+                                                }}</td>
+
+                                        </tr>
+                                        <tr>
+
+                                            <td style="color: gray;">Loại file</td>
+                                            <td style="padding-left: 20px;">Full code</td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            <div class="col-lg-4">
+
+                                <div class="btn-group-details">
+                                    <button (click)="onDownloadCodeProductClick()" class="btn btn-download"> <i
+                                            class="bi bi-download"></i>
+                                        &emsp;DOWNLOAD</button>
+                                    <button class="btn btn-watch-demo"> <i class="bi bi-play-btn-fill"></i>
+                                        &emsp;Video
+                                        Demo</button>
+                                    <button class="btn btn-watch-demo"> <i class="bi bi-heart"></i> &emsp;Yêu
+                                        thích</button>
+
+                                </div>
+                            </div>
+                            <div class="commit-box-details">
+                                <h6>Cam kết người mua</h6>
+                                <div class="commit-details">
+                                    <div class="img-left-icon">
+                                        <img src="assets/img/commit.png" alt="">
+                                    </div>
+                                    <div class="commit-content">
+                                        <p>Đảm bảo chức năng như video demo</p>
+                                    </div>
+                                </div>
+
+                                <div class="commit-details">
+                                    <div class="img-left-icon">
+                                        <img src="assets/img/commit.png" alt="">
+                                    </div>
+                                    <div class="commit-content">
+                                        <p>Hỗ trợ cài đặt</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="des-detail-area">
+                    <div class="title-description"><span>Mô tả chi tiết</span></div>
+
+                    <div class="prod-details-description">
+                        <div class="text-des">
+                            <p>{{codeProd.code_Description}}</p>
+                        </div>
+                        <hr>
+                        <div class="video-des">
+                            <h6>Video Demo :</h6>
+                            <div>
+                                <!-- <iframe [src]="codeProd.demo_Video_Link" width="100%" height="350"></iframe> -->
+
+                            </div>
+                            <span>Xem đầy đủ >></span><a [href]="codeProd.demo_Video_Link">Tại đây</a>
+                        </div>
+                        <hr>
+                        <div class="image-des">
+                            <h6>Hình ảnh Demo</h6>
+                            <div class="box-img-detail">
+                                <div *ngFor="let item of codeProd.images">
+                                    <img [src]="item" alt="">
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="des-detail-area" style="margin-top: 80px;">
+                    <div class="title-description"><span>Hướng dẫn cài đặt</span></div>
+
+                    <div class="prod-details-description">
+                        <p>
+                            {{codeProd.install_Instruction}}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="content-list-product">
+                    <div class="title-product-box">
+                        <div class="title-content">
+                            <h3>GỢI Ý CHO BẠN</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- product-item -->
+                       
+
+                    <app-product-cards *ngFor="let item of lstRelatedProduct" [codeProductItem]="item" class="col-lg-3 card-product-item"></app-product-cards>
+                        <!-- product-item -->
+                        
+                    </div>
+
+                    <div class="pagination">
+                        <a href="#" class="prev">&laquo; Trước</a>
+                        <a href="#" class="page">1</a>
+                        <a href="#" class="page">2</a>
+                        <a href="#" class="page">3</a>
+                        <a href="#" class="next">Sau &raquo;</a>
+                    </div>
+                </div>
+
+
+                <div class="des-detail-area" style="margin-top: 80px;">
+                    <div class="title-description"><span>BÌNH LUẬN</span></div>
+
+                    <div class="prod-details-description">
+                        <div class="rating-comment-box">
+                            <h4>Đánh giá và nhận xét</h4>
+                            <div class="rating-box row">
+                                <div class="core-rating col-lg-3">
+                                    <h2>{{ratingAverages | number:'1.2-2'}}/5</h2>
+                                    
+                                    <div class="rating rating-average-card">
+                                        <span *ngFor="let star of [1, 2, 3, 4, 5]" class="star">
+                                          <span class="bi" [ngClass]="{'bi-star-fill': star <= ratingAverages, 'bi-star-half': star - ratingAverages > 0 &&star - ratingAverages < 1 , 'bi-star':  star >= ratingAverages + 1}"></span>
+                                        </span>
+                                    </div>
+                                    <h5>{{codeProd.comments.length}} đánh giá và nhận xét</h5>
+                                    
+
+                                </div>
+                                <div class="comment-box col-lg-9">
+                                    <form class="rating-input-group" id="rating-comment-form" (ngSubmit)="sendRating(f)" #f="ngForm">
+                                      
+
+                                        <div class="star-rating rating-input-group">
+                                            <i *ngFor="let star of [1,2,3,4,5]; let i = index" class="bi bi-star-fill"
+                                                [ngClass]="{ 'text-warning': i < selectedStars }"
+                                                (mouseenter)="hoverStar(i + 1)" (click)="rate(i + 1)"></i>
+
+
+                                            <span class="btn" style="color: gray;" (click)="clearRate()">clear</span>
+                                            <div>
+                                                <small style="color: red;">{{notiRating}}</small>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        <textarea class="comment-text-area" ngModel name="commentContent" id="comment"
+                                            placeholder="Nhận xét của bạn"></textarea>
+                                        <button type="submit" class="btn submit-comment"><i class="ri-send-plane-fill"
+                                                id="send-comment"></i>Gửi</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="comment-list">
+                                <!-- comment-1 -->
+                                <div class="box-cmt" *ngFor="let item of codeProd.comments ">
+                                    <div class="box-user">
+                                        <img [src]="item.user_Comment.avatar_Url" alt="">
+                                           
+                                        <p class="name-user-comment">{{item.user_Comment.name}}</p>
+                                    </div>
+                                    <div class="comment-text">
+                                        <div class="triangle"></div>
+                                        <div class="star-group">
+                                            
+                                            <i *ngFor="let star of [1, 2, 3, 4, 5]" class="bi bi-star-fill" [ngClass]="{ 'text-warning': star <= item.rating_Starts }"></i>
+                                            
+                                          </div>
+                                        <p style="margin: 5px 0px;"> {{item.comment_Content}} </p>
+                                        
+                                        <small class="day-comment">{{item.comment_Date}}</small>
+
+                                        <div class="dropdown comment-option" *ngIf="item.user_Comment._id === userLogin._id">
+                                            <button class="btn" type="button" id="dropdownMenuButton"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="bi bi-three-dots-vertical"></i>
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <button class="dropdown-item" (click)="deleteComment(item._id)"><i class="bi bi-trash3"
+                                                        style="color: darkred;cursor: pointer;"></i>&ensp;Xóa đánh giá</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-lg-3">
+                <div class="box-seller-infor">
+                    <h5>Người bán</h5>
+                    <div class="box-img-seller-infor">
+                        <img [src]="codeProd.user_Upload.avatar_Url" alt="">
+                    </div>
+                    <div class="box-seller-infor-details">
+                        <a href="#" class="name-seller-infor" style="text-decoration: none;">
+                            <h4>{{codeProd.user_Upload.name}}</h4>
+                        </a>
+
+                        <div class="contact-seller-infor" *ngIf="transactionUserCheck; else hideSellerInforTemplate">
+                            <h6>Thông tin liên hệ hỗ trợ</h6>
+                            <span style="font-weight: bold;color: gray; margin-right: 5px;">Email:</span>
+
+                            <p class="details-contact-seller">{{codeProd.user_Upload.email}}</p>
+
+
+                            <span style="font-weight: bold;color: gray; margin-right: 5px;">SĐT:</span>
+
+                            <p class="details-contact-seller">{{codeProd.user_Upload.phone_Number}}</p><br>
+                        </div>
+
+                        <ng-template #hideSellerInforTemplate>
+                            <span style="font-weight: bold;color: gray; margin-right: 5px;">Email:</span>
+
+                            <span class="details-contact-seller">Đang ẩn</span><br>
+                            <span style="font-weight: bold;color: gray; margin-right: 5px;">SĐT:</span>
+
+                            <span class="details-contact-seller">Đang ẩn</span><br>
+                            <small>(Chỉ hiện khi đã mua code)</small>
+
+                        </ng-template>
+                    </div>
+                </div>
+
+                <div class="outstanding-code-box" id="left-scroll">
+                    <div class="outstanding-title">
+                        <h5><i class="bi bi-star-fill" style="margin-right: 5px;"></i>Code nổi bật</h5>
+
+                    </div>
+                    <hr>
+                    <div class="outstanding-products-list">
+                        <!-- outstanding item -->
+                        <a href="#" class="card-outstanding-item-link" style="text-decoration: none;">
+                            <div class="card-outstanding-product-item">
+                                <img src="https://sharecode.vn/FilesUpload/Code/[vui-long-kiem-tra-lai-link-download]-sharecode-website-ban-hang-my-pham-cuc-dep-95119.jpg"
+                                    alt="">
+
+                                <div class="title-outstanding">
+                                    <h6>website bán hàng mỹ phẩm cực đẹp</h6>
+                                    <div class="rating-average-card">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bottom-oustanding-details">
+                                <div><span><i class="bi bi-bookmarks"></i></span>
+                                    <span>PHP Laravel</span>
+                                </div>
+                                <div>
+                                    <div style="display: flex">
+                                        <div style="margin-right: 5px;"><i class="bi bi-eye"></i> 2451</div>
+                                        <div><i class="bi bi-download"></i> 24</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <hr>
+                        <!-- end- outstanding item -->
+
+                        <!-- outstanding item -->
+                        <a href="#" class="card-outstanding-item-link" style="text-decoration: none;">
+                            <div class="card-outstanding-product-item">
+                                <img src="https://sharecode.vn/FilesUpload/Code/[vui-long-kiem-tra-lai-link-download]-sharecode-website-ban-hang-my-pham-cuc-dep-95119.jpg"
+                                    alt="">
+
+                                <div class="title-outstanding">
+                                    <h6>website bán hàng mỹ phẩm cực đẹp</h6>
+                                    <div class="rating-average-card">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bottom-oustanding-details">
+                                <div><span><i class="bi bi-bookmarks"></i></span>
+                                    <span>PHP Laravel</span>
+                                </div>
+                                <div>
+                                    <div style="display: flex">
+                                        <div style="margin-right: 5px;"><i class="bi bi-eye"></i> 2451</div>
+                                        <div><i class="bi bi-download"></i> 24</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <hr>
+                        <!-- end- outstanding item -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+</div>

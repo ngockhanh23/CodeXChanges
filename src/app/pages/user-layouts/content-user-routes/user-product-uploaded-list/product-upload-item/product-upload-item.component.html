@@ -1,0 +1,23 @@
+<!-- item -->
+<div class="row lst-prod-item">
+    <div class="col-lg-5 row " style="align-items: center;">
+        <!-- <div class="col-lg-3" style="display: flex; align-items: center;">1250</div> -->
+        <div class="col-lg-9"><span (click)="navigateCodeProductDetails(prodUploadedItem._id)" class="link-edit" style="text-decoration: none;">{{prodUploadedItem.code_Title}}</span></div>
+    </div>
+    <div class="col-lg-7 row" style="align-items: center;">
+        <div class="col-lg-3">{{prodUploadedItem.download_Price}} xu</div>
+        <div class="col-lg-2">{{prodUploadedItem.number_Of_Download}}</div>
+        <div class="col-lg-2">{{prodUploadedItem.number_Of_View}}</div>
+        <div class="col-lg-4">
+            <span class="status-label-ok" [ngClass]="{'status-label-nope' : prodUploadedItem.status === 'Chờ duyệt'}">{{prodUploadedItem.status}}</span>
+        </div>
+        <div class="col-lg-1">
+            <div style="display: flex;">
+                <a href="#" class="link-edit edit-item"><i class="bi bi-pen"></i></a> 
+                
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<!-- end-item -->

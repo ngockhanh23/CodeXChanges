@@ -1,0 +1,16 @@
+.star-rating {
+    .bi-star-fill {
+      color: grey; /* Màu mặc định của ngôi sao */
+      transition: color 0.2s ease; /* Hiệu ứng chuyển màu */
+    }
+  
+    .bi-star-fill:hover {
+      color: gold; /* Màu vàng khi di chuột vào ngôi sao */
+    }
+  }
+
+.rating-start-display{
+  color: goldenrod; /* Màu vàng khi di chuột vào ngôi sao */
+
+}
+  

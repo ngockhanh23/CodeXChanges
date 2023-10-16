@@ -1,0 +1,66 @@
+<div class="container user-content">
+
+    <div class="login-container">
+        <div class="login-box">
+
+            <div class="login-register">
+                <div class="box">
+                    <form (ngSubmit)="onRegister(f)" #f="ngForm">
+                        <h4>Đăng ký tài khoản</h4>
+                        <br>
+                        
+                        <div class="input-container">
+                            <div class="input-icon">
+                                <img src="https://e7.pngegg.com/pngimages/32/267/png-clipart-child-computer-icons-avatar-child-child-face-thumbnail.png"
+                                    alt="User Icon">
+                                <input ngModel name="userName" class="form-control login-register-input" type="text"
+                                    placeholder="Tên của bạn" required>
+                            </div>
+                        </div>
+
+                        <div class="input-container">
+                            <div class="input-icon">
+                                <img src="https://cdn-icons-png.flaticon.com/512/4181/4181537.png"
+                                    alt="User Icon">
+                                <input ngModel name="email" class="form-control login-register-input" type="email"
+                                    placeholder="Gmail của bạn" required>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="input-container">
+                            <div class="input-icon">
+                                <img src="https://cdn-icons-png.flaticon.com/512/5733/5733312.png"
+                                    alt="Password Icon">
+                                <input ngModel name="password" class="form-control login-register-input" type="password"
+                                    placeholder="Nhập mật khẩu" required>
+                            </div>
+                        </div>
+
+                        <div class="input-container">
+                            <div class="input-icon">
+                                <img src="https://cdn-icons-png.flaticon.com/512/5733/5733312.png"
+                                    alt="Password Icon">
+                                <input ngModel name="rePassword" class="form-control login-register-input" type="password"
+                                    placeholder="Nhập lại mật khẩu" required>
+                            </div>
+                        </div>
+                        <!-- <p style="color: red;margin-left:50px">@ViewBag.ThongBao</p> -->
+
+                        <button type="submit" class="btn">Đăng nhập</button>
+                        <p  style="color: red;text-align: center; margin-top: 10px;">{{warningMessage}}</p>
+                        <div style="display: flex;margin-top: 10px;justify-content: center;">
+                            <span>Bạn đã có tài khoản ? </span>
+                            <a href="#" style="color: var(--primary-color);">Đăng nhập</a>
+                        </div>
+                        <hr>
+
+                        
+                    </form>
+                   
+                </div>
+            </div>
+
+        </div>
+    </div>

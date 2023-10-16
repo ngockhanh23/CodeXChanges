@@ -1,0 +1,31 @@
+<!-- product-item -->
+<div>
+    <a [routerLink]="['/details', codeProductItem._id]" routerLinkActive="router-link-active">
+        <div class="card card-prod-details" style="width: 100%;">
+            <img class="card-img-top" [src]="codeProductItem.avatar_Url" alt="Card image cap">
+            <div class="card-body">
+
+                <h6 class="card-title">{{codeProductItem.code_Title}}</h6>
+                <!-- <div class="rating-average-card">
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                </div> -->
+                <div style="display: flex;"><span><i class="bi bi-bookmarks"></i></span>
+                    <small>{{codeProductItem.category.category_Name}}</small>
+                </div>
+                <div class="product-cart-bottom-details">
+                    <div class="btn card-detail-icon" style="color: goldenrod;"><i class="bi bi-eye"></i> {{codeProductItem.number_Of_View}}</div>
+                    <div class="btn card-detail-icon" style="color: goldenrod;"><i class="bi bi-download"></i> {{codeProductItem.number_Of_Download}}</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </a>
+</div>
+<!-- product-item -->

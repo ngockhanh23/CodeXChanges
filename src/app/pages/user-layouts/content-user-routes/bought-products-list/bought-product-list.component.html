@@ -1,0 +1,76 @@
+<div class="container user-content">
+
+
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="#">Code đã mua</a></li>
+        </ol>
+    </nav>
+
+    <div class="main-details-content" *ngIf="lstBoughtProducts.length >0; else emptyLstBoughtProducts">
+        <div class="row">
+            <div class="col-lg-9" style="margin-top: 20px;">
+
+                <div class="content-list-product">
+                    <div class="title-product-box">
+                        <div class="row">
+                            <div class="col-lg-3 title-content">
+                                <h5>Code đã mua</h5>
+                            </div>
+
+                            <div class="col-lg-9 sort-category-item">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lst-prod">
+                        <div class="row lst-prod-head">
+                            <div class="col-lg-4 row" style="align-items: center;">
+                                <!-- <div class="col-lg-3">Mã</div> -->
+                                <div class="col-lg-12">Source code</div>
+                            </div>
+                            <div class="col-lg-8 row" style="align-items: center;">
+                               <div class="col-lg-3">Ngày mua</div>
+                               <div class="col-lg-5">Người bán</div>
+                               <div class="col-lg-2">Số xu</div>
+                               <div class="col-lg-2">Link download</div>
+
+                            </div>
+                        </div>
+
+                        <app-bought-product-item *ngFor="let item of lstBoughtProducts" [boughtProductItem]="item"></app-bought-product-item>
+
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+
+                <div id="left-scroll">
+                    <a href="#">
+                        <img src="https://sharecode.vn/assets/images/Ra-mat-topcode.jpg" alt=""
+                            style="height: 100%; width: 60%;">
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+    <ng-template #emptyLstBoughtProducts>
+        <div>
+            <h3>Bạn chưa mua source code nào</h3>
+        </div>
+    </ng-template>
+
+
+
+
+</div>

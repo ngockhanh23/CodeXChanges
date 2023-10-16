@@ -1,0 +1,61 @@
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="#">Danh mục {{category.category_Name}}</a></li>
+                      </ol>
+    </nav>
+    
+    <div class="main-details-content">
+        <div class="row">
+            <div class="col-lg-9" style="margin-top: 20px;">                    
+    
+                <div class="content-list-product">
+                    <div class="title-product-box">
+                        <div class="row">
+                            <div class="col-lg-3 title-content">
+                                <h3>{{category.category_Name}}</h3>
+                            </div>
+    
+                            <div class="col-lg-9 sort-category-item">
+                                <span>Sắp xếp theo</span>
+                                <button class="btn">Mới nhất</button>
+                                <button class="btn">Tải nhiều nhất</button>
+                                <button class="btn">Xem nhiều nhất</button>
+                                <button class="btn">Miễn phí</button>
+    
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <app-product-cards *ngFor="let item of category.codeProducts" [codeProductItem]="item"  class="col-lg-3 card-product-item"></app-product-cards>
+                    </div>
+    
+                    <!-- <div class="pagination">
+                        <a href="#" class="prev">&laquo; Trước</a>
+                        <a href="#" class="page">1</a>
+                        <a href="#" class="page">2</a>
+                        <a href="#" class="page">3</a>
+                        <a href="#" class="next">Sau &raquo;</a>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-lg-3">                       
+    
+                <div id="left-scroll">
+                    <a href="#">
+                        <img src="https://sharecode.vn/assets/images/Ra-mat-topcode.jpg" alt="" style="height: 100%; width: 60%;">
+                    </a>
+    
+                </div>
+            </div>
+        </div>
+    
+      
+        
+    
+    
+    </div>
+    
+</div>

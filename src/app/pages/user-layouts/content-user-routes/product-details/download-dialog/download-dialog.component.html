@@ -1,0 +1,24 @@
+<div class="download-dialog">
+
+   
+    <div class="download-dialog-body">
+        <div>
+            <h5>Hãy tải xuống source code của bạn và trải nghiệm</h5>
+            <div style="display: flex;justify-content: center; padding: 20px 5px;">
+            <img style="width: 100px;" src="https://cdn.pixabay.com/photo/2017/02/07/02/16/cloud-2044822_640.png" alt="">
+                
+            </div>
+        <div class="form-inline">
+            <small style="margin-right: 10px;">Link download :</small>
+            <input class="form-control mr-sm-2" [value]="data.download_Link">
+            <a [href]="data.download_Link" class="btn btn-download-access my-2 my-sm-0">Truy cập nhanh</a>
+        </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="onNoClick()">Đóng</button>
+    
+    </div>
+    
+
+</div>
