@@ -8,12 +8,12 @@ import { Observable } from 'rxjs';
   })
   export class AuthServices { 
     
-    adminLoginExisting : any;
-    userLoginExisting : any;
-    coinBalanceUser : Number = 0;
+    adminLoginExisting : any =null;
+    userLoginExisting : any = null;
+    // coinBalanceUser : Number = 0;
     userLoginEmitter : EventEmitter<any> = new EventEmitter<any>();
     adminLoginEmitter : EventEmitter<any> = new EventEmitter<any>();
-    coinBalanceUserEmitter : EventEmitter<number> = new EventEmitter<number>();
+    // coinBalanceUserEmitter : EventEmitter<number> = new EventEmitter<number>();
 
 
     constructor(private http: HttpClient) {}
@@ -42,28 +42,24 @@ import { Observable } from 'rxjs';
       this.userLoginExisting = user;
       this.userLoginEmitter.emit(this.userLoginExisting);
       localStorage.setItem('account_id', user._id);
-      this.coinBalanceUser = user.coin_Balance;
+      // this.coinBalanceUser = user.coin_Balance;
       // console.log(this.userLoginExisting)
     }
     
-    // getCointBalanceUser(){
-    //   return this.coinBalanceUser;
-    // }
 
-    // setCoinBalanceUser(coinBalance : number){
-    //   this.coinBalanceUser = coinBalance;
-    //   this.coinBalanceUserEmitter.emit(coinBalance);
-    // }
+
+    getUserLoginExisting(){
+      return this.userLoginExisting;
+    }
     clearUserLogged(){
+
       this.userLoginExisting = null;
-      this.userLoginEmitter.emit(this.userLoginExisting);
+      this.userLoginEmitter.emit(null);
 
       this.adminLoginExisting = null;
-      this.adminLoginEmitter.emit(this.adminLoginExisting);
+      this.adminLoginEmitter.emit(null);
       localStorage.removeItem('account_id');
 
-      this.coinBalanceUser = 0;
-      this.coinBalanceUserEmitter.emit(0);
     }
 
     clearAdminAccountLogged(){
@@ -72,7 +68,7 @@ import { Observable } from 'rxjs';
         this.checkRoleAccount(accountLogged).subscribe((res) =>{
           if(res.role =="admin"){
             this.adminLoginExisting = null;
-            this.adminLoginEmitter.emit(this.adminLoginExisting);
+            this.adminLoginEmitter.emit(null);
             localStorage.removeItem('account_id');
           }
         })

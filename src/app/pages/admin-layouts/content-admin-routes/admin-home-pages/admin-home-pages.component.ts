@@ -12,8 +12,10 @@ export class AdminHomePagesComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    if (this.authServices.adminLoginExisting == null) {
-      this.router.navigate(['']);
+
+    
+    if (this.authServices.adminLoginExisting === null) {
+      this.router.navigate(['/']);
     }
   }
   onLogOut() {

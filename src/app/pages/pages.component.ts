@@ -11,22 +11,22 @@ export class PagesComponent implements OnInit {
 
   adminLogin: any;
 
-  constructor(private authServices: AuthServices,private router: Router) { }
+  constructor(private authServices: AuthServices, private router: Router) { }
   ngOnInit(): void {
     this.authServices.adminLoginEmitter.subscribe((account) =>
-    this.adminLogin = account
-  );
+      this.adminLogin = account
+    );
     const loginExists = localStorage.getItem('account_id');
-
+    console.log("user login : " + loginExists)
 
     if (loginExists) {
       this.authServices.checkRoleAccount(loginExists).subscribe((res) => {
-        if (res.role == "user") {
+        if (res.role === "user") {
           this.authServices.getUserById(loginExists).subscribe((res) => {
             this.authServices.setUserLogged(res)
           })
         }
-        else if(res.role == "admin"){
+        else if (res.role === "admin") {
           this.authServices.getAdminAccountById(loginExists).subscribe((res) => {
             this.authServices.setAdminLogged(res);
             // console.log(this.authServices.adminLoginExisting)
@@ -34,12 +34,11 @@ export class PagesComponent implements OnInit {
 
           })
         }
-
-      
-
-
-
       });
+      // return
     }
+    // else
+    
+    // this.authServices.clearUserLogged()
   }
 }

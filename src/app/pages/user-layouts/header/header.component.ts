@@ -10,7 +10,7 @@ import { UserServices } from 'src/services/users-services';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit{
-  userLogin : any;
+  userLogin : any = null;
   // coinBalanceUser : number = 0;
   lstCategories: any;
   countUnreadNoti = 0;
