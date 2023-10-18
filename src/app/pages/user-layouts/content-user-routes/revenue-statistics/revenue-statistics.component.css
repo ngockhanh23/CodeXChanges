@@ -1,0 +1,20 @@
+.input-date{
+    margin-bottom: 20px;
+}
+.btn-statistic{
+    width: 100%;
+   
+}
+.statistic-details{
+    padding: 10px 0px;
+    font-size: 20px;
+}
+.title-detail-statistic{
+    font-weight: bold;
+}
+.title-detail-statistic i{
+    margin-right: 5px;
+}
+.detail-statistic-item{
+    margin-bottom: 10px;
+}

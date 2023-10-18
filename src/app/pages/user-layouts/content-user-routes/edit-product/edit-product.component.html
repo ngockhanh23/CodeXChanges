@@ -1,0 +1,526 @@
+<div class="container user-content">
+
+    <!-- <div *ngIf="uploading" class="spinner-container">
+        <div class="spinner"></div>
+    </div>
+
+    <div #successModal class="modal">
+        <div class="modal-content">
+          
+          <h2 style="margin-bottom: 0;">Tải lên thành công !</h2>
+          <div class="img-complete-cover">
+          <img src="assets/img/confirm.png" alt=""  class="complete-img">
+
+          </div>
+          <h6>Cám ơn bạn đã upload sản phẩm của mình và chia sẽ cho mọi người, hãy kiên nhẫn và đợi đội ngũ phê duyệt của chúng tôi nhé !</h6>
+          <div class="option-modal-upload">
+            <button class="btn btn-success" (click)="closeModal()">Tiếp tục đăng tải</button>
+            <span class="space-button"></span>
+            <button class="btn btn-info btn-modal-option" (click)="getProductsUploaded()"  >Danh sách upload</button>
+
+          </div>
+        </div>
+
+
+        
+      </div>
+      
+       -->
+
+
+
+    <div class="main-details-content">
+        <div class="row">
+            <div class="col-lg-9 upload-prod-layout">
+                <div class="upload-prod-title">
+                    <h4 style="text-align: center; color: gray;">CHỈNH SỬA SOURCE CODE</h4>
+                </div>
+                <div class="row up-note">
+                    <div class="col-lg-6 up-note-item" style="border-right: 1px solid rgb(215, 215, 215);">
+                        <div>
+                            <h3><i class="bi bi-coin"></i> &nbsp;Lợi ích</h3>
+                            <ul>
+                                <li>Tiếp cận trăm nghìn khách hàng tiềm năng mỗi ngày</li>
+                                <li>Hưởng 70% doanh thu trên mỗi code được bán</li>
+                                <li>Bạn tự đặt phí cho source code của mình</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-6 up-note-item">
+                        <div>
+                            <h3><i class="bi bi-lightbulb"></i> &nbsp;Mẹo giúp bạn tăng doanh thu</h3>
+                            <ul>
+                                <li>Cách nhập thông tin đầy đủ, rõ ràng và hữu ích</li>
+                                <li>Đưa ra mức phí hợp lý và có sức thu hút</li>
+                                <li>Tạo chiến lược quảng bá, giới thiệu</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="upload-area">
+                    <form [formGroup]="form">
+                        <div class="row">
+                            <div class="col-lg-2 title-property-upload">
+                                <h6>Ảnh đại diện</h6><span style="color: red;">*</span>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="box-img-uppload">
+
+                                    <input id="file-input" type="file" (change)="onAvatarImageSelected($event)"
+                                        accept="image/*" style="display: none;" formControlName="avatarUrl" #inputField>
+
+                                    <label for="file-input">
+                                        <img />
+
+                                        <img *ngIf="avatarImageUrl" [src]="avatarImageUrl" alt="Uploaded Image"
+                                            id="img-preview" alt="" width="200px" height="180px"><br>
+
+
+                                    </label> <br>
+                                    <!-- <small *ngIf=" submitted && form.controls['avatarUrl'].hasError('required')"
+                                        style="color: red;">Hình ảnh đại diện không được để trống</small> -->
+
+
+                                    <!-- <button class="btn" (click)="uploadProd()">Test Upload Image</button> -->
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <br>
+                                <span style="color: green;"><i class="bi bi-check-circle-fill"></i></span>
+                                <span>Ảnh đẹp sẽ giúp code có nhiều lượt xem</span><br><br>
+                                <span style="color: green;"><i class="bi bi-check-circle-fill"></i></span>
+                                <span>Dung lượng tối đa: 4MB</span><br>
+                            </div>
+                        </div>
+
+                        <hr>
+
+
+
+                        <div class="row">
+                            <div class="col-lg-2 title-property-upload">
+                                <h6>Tiêu đề code</h6> <span style="color: red;">*</span>
+                            </div>
+                            <div class="col-lg-6 property-upload">
+                                <input type="text" class="form-control" formControlName="prodTitle" #inputField
+                                    placeholder="Tiêu đề hiển thị" >
+                                <br>
+                                <small *ngIf="form.controls['prodTitle'].hasError('required')"
+                                    style="color: red; margin-left: 5px;">Tiêu đề code không được để trống</small>
+                            </div>
+                            <div class="col-lg-4 property-upload">
+
+                                <span style="color: green;"><i class="bi bi-check-circle-fill"></i></span>&nbsp;
+                                <span>Quyết định 80% SEO</span><br><br>
+
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-2 title-property-upload">
+                                <h6>Link download</h6> <span style="color: red;">*</span>
+                            </div>
+                            <div class="col-lg-6 property-upload">
+                                <input type="text" class="form-control" formControlName="downloadLink" #inputField
+                                    placeholder="Link download: GoogleDrive, Fshare,..."> <br>
+                                <small *ngIf="form.controls['downloadLink'].hasError('required')"
+                                    style="color: red; margin-left: 5px;"> Link download không được để trống </small>
+
+                            </div>
+                            <div class="col-lg-4 property-upload">
+
+
+                                <span><span style="color: green;"><i
+                                            class="bi bi-check-circle-fill"></i></span>&nbsp;Hãy nhớ bật chế độ công
+                                    khai cho file source code trước khi điền mục này</span><br><br>
+
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="row">
+                                    <div class="col-lg-4 title-property-upload">
+                                        <h6>Danh mục&emsp;</h6> <span style="color: red;">*</span>
+                                    </div>
+
+                                    <div class="col-lg-8 " style="margin: 0;">
+                                        <div class="property-upload-2">
+                                            <select class="form-control property-upload-input-field"
+                                                formControlName="category" #inputField>
+                                                <!-- <option value="0">--Chọn danh mục--</option>
+                                                <option value="haha">C#</option>
+                                                <option value="2">PHP</option> -->
+                                                <option [value]="item._id" *ngFor="let item of lstCategoriesOptions">
+                                                    {{item.category_Name}}</option>
+                                            </select>
+                                            <small *ngIf="form.controls['category'].hasError('required')"
+                                                style="color: red; margin-left: 5px;"> Bạn chưa chọn danh mục </small>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <hr>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4 title-property-upload">
+                                        <h6>Link video demo&emsp;</h6>
+                                    </div>
+
+                                    <div class="col-lg-8 " style="margin: 0;">
+                                        <div class="property-upload-2">
+                                            <input type="text" placeholder="Nếu có"
+                                                class="form-control property-upload-input-field"
+                                                formControlName="demoVideoLink" #inputField>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <hr>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4 title-property-upload">
+                                        <h6>Phí tải&emsp;</h6>
+                                    </div>
+
+                                    <div class="col-lg-8 " style="margin: 0;">
+                                        <div class="property-upload-2">
+                                            <div class="property-upload-input-field">
+
+                                                <div>
+                                                    <input style="display: none;" type="radio" id="option1"
+                                                        name="option" value="0">
+                                                    <label for="option1">
+                                                        <div class="option-price"
+                                                            [ngClass]="{'selected-option-price' : form.controls['downloadPrice'].value ===0}">
+                                                            Miễn phí</div>
+                                                    </label><br>
+
+                                                    <input style="display: none;" type="radio" id="option2"
+                                                        name="option" value="1">
+                                                    <label for="option2">
+                                                        <div class="option-price"
+                                                            [ngClass]="{'selected-option-price' : form.controls['downloadPrice'].value >=2 && form.controls['downloadPrice'].value <= 99 }">
+                                                            Code tham khảo <small>(2 xu - 99
+                                                                xu)</small></div>
+
+                                                    </label><br>
+
+                                                    <input style="display: none;" type="radio" id="option3"
+                                                        name="option" value="2">
+                                                    <label for="option3">
+                                                        <div class="option-price"
+                                                            [ngClass]="{'selected-option-price' : form.controls['downloadPrice'].value >= 100}">
+                                                            Code chất lượng <small>(≥100
+                                                                xu)</small>
+
+                                                        </div>
+
+
+                                                    </label><br>
+                                                    <!-- <small class="quality-prod-noti-none" [ngClass]="{'quality-prod-noti' : price_Download_Input >=100}">Bạn phải cam kết hỗ trợ người dùng cài đặt khi upload nhóm code chất lượng</small> -->
+                                                    <!-- <small *ngIf="form.controls['downloadPrice'].value >= 100"
+                                                        style="color: gray; margin-left: 5px;"> Bạn phải cam kết hỗ trợ
+                                                        người dùng cài đặt khi upload nhóm code chất lượng </small> -->
+
+                                                    <br>
+                                                </div>
+                                                <div class="">
+                                                    <div class="input-price">
+                                                        <select name="" id="dropdown-coin-option" class="form-control"
+                                                            style="width: 40%" formControlName="downloadPrice" #inputField
+                                                            (change)="onSelectPriceChange($event)">
+                                                            <option value="0">Chọn</option>
+
+                                                            <option value="5">5</option>
+                                                            <option value="10">10</option>
+                                                            <option value="20">20</option>
+                                                            <option value="50">50</option>
+                                                            <option value="80">80</option>
+                                                            <option value="100">100</option>
+                                                            <option value="150">150</option>
+                                                            <option value="200">200</option>
+                                                        </select>
+                                                        <input id="coin-number" style="width: 50%;" type="number"
+                                                            min="0" class="form-control" placeholder="Tự nhập số xu"
+                                                            formControlName="downloadPrice" #inputField>
+                                                        <span style="color: goldenrod; font-size: 20px;">&nbsp; <i
+                                                                class="bi bi-coin"></i></span>
+                                                                <small
+                                                                *ngIf="form.controls['downloadPrice'].value < 0"
+                                                                style="color: red; margin-left: 5px;"> Giá download phải lớn hơn 0 </small>
+                                                    </div>
+                                                    <!-- <div class="area-support-commit">
+                                                        <input type="checkbox" class="check-box-support-commit"
+                                                            formControlName="commitmentToSupport" #inputField>
+                                                        <span>&nbsp;Cam kết hỗ trợ người dùng</span> <br>
+                                                        <small
+                                                            *ngIf=" submitted && form.controls['commitmentToSupport'].value === false && form.controls['downloadPrice'].value >= 100"
+                                                            style="color: red; margin-left: 5px;"> Bạn chưa cam kết hỗ
+                                                            trợ người dùng 
+                                                        </small>
+
+                                                    </div> -->
+
+                                                </div>
+
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <hr>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-4 title-property-upload">
+                                        <h6>Hình ảnh demo&emsp;</h6>
+                                    </div>
+
+                                    <div class="col-lg-8 " style="margin: 0;">
+                                        <div class="property-upload-2">
+
+
+                                            <!-- <input style="display: none;" class="form-control-file" type="file"
+                                                (change)="onPictureProductDemoSelected($event)" accept="image/*"
+                                                multiple id="fileInputMultiple" formControlName="demoImgages"
+                                                #inputField> -->
+                                            <div *ngIf="imagesProductUrl.length > 0">
+                                                <div *ngFor="let imageUrl of imagesProductUrl">
+                                                    <img [src]="imageUrl" alt="Uploaded Image"
+                                                        style="width: 200px; margin-bottom: 5px;">
+                                                </div>
+                                                
+
+                                            </div>
+
+
+
+                                            <!-- <input style="display: none;" class="form-control-file" type="file"
+                                                id="fileInputMultiple" multiple> -->
+                                            <label for="fileInputMultiple">
+                                                <div class="input-file-label">
+                                                    <h6><i class="bi bi-plus-circle-fill"></i>&nbsp;Tải lên hình ảnh
+                                                    </h6>
+                                                </div>
+                                            </label>
+                                            <!-- <span class="btn clear-btn" (click)="clearImgProdList()">Clear</span> -->
+                                            <p style="color: gray; font-size: 15px;">*Chỉ được tối đa 5 ảnh</p>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-lg-4">
+                                <div class="up-note-item">
+                                    <div style="display: flex;">
+                                        <h3><i class="bi bi-lightbulb"></i> &nbsp;</h3>
+                                        <h5 style="color: gray;">Hoàn thành đầy đủ thông tin giúp code của bạn được
+                                            nhiều người biết đến và thu hút hơn</h5>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-lg-2 title-property-upload">
+                                <h6>Mô tả chi tiết</h6> <span style="color: red;">*</span>
+                            </div>
+                            <div class="col-lg-10 property-upload">
+                                <textarea formControlName="prodDescription" #inputField class="form-control"
+                                    placeholder="Mô tả chi tiết" id="" rows="4"></textarea> <br>
+                                <small *ngIf="form.controls['prodDescription'].hasError('required')"
+                                    style="color: red; margin-left: 5px;"> Mục này không được để trống </small>
+
+                            </div>
+
+                        </div>
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-lg-2 title-property-upload">
+                                <h6>Hướng dẫn cài đặt</h6> <span style="color: red;">*</span>
+                            </div>
+                            <div class="col-lg-10 property-upload">
+                                <textarea formControlName="installInstruction" #inputField name="" class="form-control"
+                                    placeholder="Hướng dẫn cài đặt" id="" rows="4"></textarea> <br>
+                                <small *ngIf="form.controls['installInstruction'].hasError('required')"
+                                    style="color: red; margin-left: 5px;"> Mục này không được để trống </small>
+
+                            </div>
+
+                        </div>
+                        <hr>
+                       
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-lg-2">
+
+                            </div>
+                            <div class="col-lg-10">
+                                <button class="btn upload-btn" (click)="submitForm()"><i
+                                        class="bi bi-cloud-upload-fill"></i>Tải
+                                    lên ngay</button>
+
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+                    </form>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3">
+                <div class="box-seller-infor">
+                    <h5>Tài khoản</h5>
+                    <div class="box-img-seller-infor">
+                        <img [src]="userLogin.avatar_Url" alt="" />
+
+                    </div>
+                    <div class="box-seller-infor-details">
+                        <a href="#" class="name-seller-infor" style="text-decoration: none;">
+                            <h4>{{userLogin.name}}</h4>
+                        </a>
+
+                        <div class="contact-seller-infor">
+                            <h6>Thông tin tài khoản</h6>
+                            <span style="font-weight: bold;color: gray; margin-right: 5px;">Số xu:</span>
+                            <span class="details-contact-seller">{{userLogin.coin_Balance}} xu</span><br>
+                        </div>
+
+                        <div class="account-option-right">
+                            <a href="#">Trang cá nhân</a>
+                            <a href="#">Cài đặt tài khoản</a>
+                        </div>
+
+                        <div class="button-option">
+                            <button class="btn"> Code đã mua <span
+                                    style="font-weight: bold;">({{userLogin.purchase_History.length}})</span> </button>
+                            <button class="btn"> Code đã đăng <span
+                                    style="font-weight: bold;">({{userLogin.code_Products.length}})</span> </button>
+                            <button class="btn"> Code đã lưu <span
+                                    style="font-weight: bold;">({{userLogin.favorites.length}})</span> </button>
+                            <button class="btn"> Doanh thu bán code </button>
+                            <button class="btn"> Nạp tiền </button>
+                            <button class="btn"> Rút tiền </button>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="outstanding-code-box" id="left-scroll">
+                    <div class="outstanding-title">
+                        <h5><i class="bi bi-star-fill" style="margin-right: 5px;"></i>Code nổi bật</h5>
+
+                    </div>
+                    <hr>
+                    <div class="outstanding-products-list">
+                        <!-- outstanding item -->
+                        <a href="#" class="card-outstanding-item-link" style="text-decoration: none;">
+                            <div class="card-outstanding-product-item">
+                                <img src="https://sharecode.vn/FilesUpload/Code/[vui-long-kiem-tra-lai-link-download]-sharecode-website-ban-hang-my-pham-cuc-dep-95119.jpg"
+                                    alt="">
+
+                                <div class="title-outstanding">
+                                    <h6>website bán hàng mỹ phẩm cực đẹp</h6>
+                                    <div class="rating-average-card">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bottom-oustanding-details">
+                                <div><span><i class="bi bi-bookmarks"></i></span>
+                                    <span>PHP Laravel</span>
+                                </div>
+                                <div>
+                                    <div style="display: flex">
+                                        <div style="margin-right: 5px;"><i class="bi bi-eye"></i> 2451</div>
+                                        <div><i class="bi bi-download"></i> 24</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <hr>
+                        <!-- end- outstanding item -->
+
+                        <!-- outstanding item -->
+                        <a href="#" class="card-outstanding-item-link" style="text-decoration: none;">
+                            <div class="card-outstanding-product-item">
+                                <img src="https://sharecode.vn/FilesUpload/Code/[vui-long-kiem-tra-lai-link-download]-sharecode-website-ban-hang-my-pham-cuc-dep-95119.jpg"
+                                    alt="">
+
+                                <div class="title-outstanding">
+                                    <h6>website bán hàng mỹ phẩm cực đẹp</h6>
+                                    <div class="rating-average-card">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bottom-oustanding-details">
+                                <div><span><i class="bi bi-bookmarks"></i></span>
+                                    <span>PHP Laravel</span>
+                                </div>
+                                <div>
+                                    <div style="display: flex">
+                                        <div style="margin-right: 5px;"><i class="bi bi-eye"></i> 2451</div>
+                                        <div><i class="bi bi-download"></i> 24</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                        <hr>
+                        <!-- end- outstanding item -->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -52,7 +52,7 @@ export class ProductDetailsComponent implements OnInit {
 
         this.ratingAverages = this.getRatingAverages();
 
-        this.userServices.getAllCodeProducts().subscribe((res) => {
+        this.userServices.getApprovedProductList().subscribe((res) => {
           this.lstRelatedProduct = res.filter((prod: any) => prod.category._id === this.codeProd.category._id && prod._id !== this.codeProd._id);
         });
 

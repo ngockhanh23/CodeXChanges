@@ -1,1 +1,119 @@
-<p>revenue-statistics works!</p>
+<div class="container user-content">
+
+
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="#">Thống kê doanh thu</a></li>
+        </ol>
+    </nav>
+
+    <div class="main-details-content">
+        <div class="row">
+            <div class="col-lg-9" style="margin-top: 20px;">
+
+                <div class="content-list-product">
+                    <div class="title-product-box">
+                        <div class="row">
+                            <div class="col-lg-5 title-content">
+                                <h5>Thống kê doanh thu bán code</h5>
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <form (ngSubmit)="onSubmitStatistic(f)" #f="ngForm">
+                                <div class="input-date">
+                                    <span for="">Từ ngày</span>
+                                    <input type="date" class="form-control" ngModel name="dateStart">
+    
+                                </div>
+                                <div class="input-date">
+                                    <span for="">Đến ngày</span>
+                                    <input type="date" class="form-control" ngModel name="dateEnd">
+                                </div>
+                                <div class="input-date">
+                                    <button class="btn btn-success btn-statistic" type="submit"><i class="bi bi-graph-up"></i> Thống
+                                        kê</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-6">
+                            <h4> <i class="bi bi-graph-up" style="margin-right: 10px;"></i> Số liệu thống kê </h4>
+                            <hr>
+                            <div class="statistic-details">
+                                <div class="detail-statistic-item">
+                                    <span class="title-detail-statistic"><i class="bi bi-coin"></i> Số xu bán được : </span>
+                                    <span>{{totalPrice}} xu</span>
+                                </div>
+                                <div class="detail-statistic-item">
+                                    <span class="title-detail-statistic"><i class="bi bi-percent"></i> Hoa hồng phải chia : </span>
+                                    <span>{{commission}} xu</span>
+                                </div>
+                                <div class="detail-statistic-item">
+                                    <span class="title-detail-statistic"><i class="bi bi-cash-stack"></i> Thực nhận : </span>
+                                    <span>{{totalNetRevenues}} xu</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+
+
+
+
+                    <div class="lst-prod" *ngIf="lstRevenue.length >0; else emptyLstRevenue">
+                        <div class="row lst-prod-head" style="justify-content: center;">
+                            <div class="col-lg-4 row" style="align-items: center;  justify-content: center;">
+                                <!-- <div class="col-lg-3">Mã</div> -->
+                                <div class="col-lg-12">Source code</div>
+                            </div>
+                            <div class="col-lg-8 row" style="align-items: center; justify-content: center;">
+                                <div class="col-lg-3">Ngày mua</div>
+                                <div class="col-lg-4">Người bán</div>
+                                <div class="col-lg-2">Số xu</div>
+                                <div class="col-lg-3">Thực nhận</div>
+
+                            </div>
+                        </div>
+
+                        <app-revenue-item *ngFor="let item of lstRevenue.slice().reverse()" [revenueItem]="item"></app-revenue-item>
+
+
+                    </div>
+
+
+                    <ng-template #emptyLstRevenue>
+                        <div>
+                            <h3>Không tìm thấy dữ liệu</h3>
+                        </div>
+                    </ng-template>
+
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div id="left-scroll">
+                    <a href="#">
+                        <img src="https://sharecode.vn/assets/images/Ra-mat-topcode.jpg" alt=""
+                            style="height: 100%; width: 60%;">
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+</div>

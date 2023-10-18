@@ -39,6 +39,8 @@ import { BoughtProductListComponent } from './pages/user-layouts/content-user-ro
 import { BoughtProductItemComponent } from './pages/user-layouts/content-user-routes/bought-products-list/bought-product-item/bought-product-item.component';
 import { RevenueStatisticsComponent } from './pages/user-layouts/content-user-routes/revenue-statistics/revenue-statistics.component';
 import { NotificationComponent } from './pages/user-layouts/content-user-routes/notification/notification.component';
+import { EditProductComponent } from './pages/user-layouts/content-user-routes/edit-product/edit-product.component';
+import { RevenueItemComponent } from './pages/user-layouts/content-user-routes/revenue-statistics/revenue-item/revenue-item.component';
 
 
 const lstRoutes: Routes = [
@@ -52,6 +54,7 @@ const lstRoutes: Routes = [
   { path: 'get-products-upload-user', component: UserProductUploadedListComponent },
   { path: 'get-users-bought-product-list', component: BoughtProductListComponent },
   { path: 'upload-product-user', component: UploadProductsPageComponent },
+  { path: 'edit-code-product/:id', component: EditProductComponent},
   { path: 'notification', component: NotificationComponent},
   { path: 'revenues', component: RevenueStatisticsComponent},
 
@@ -83,6 +86,8 @@ const lstRoutes: Routes = [
     BoughtProductItemComponent,
     RevenueStatisticsComponent,
     NotificationComponent,
+    EditProductComponent,
+    RevenueItemComponent,
 
     
   ],

@@ -12,9 +12,8 @@
             <span class="status-label-ok" [ngClass]="{'status-label-nope' : prodUploadedItem.status === 'Chờ duyệt'}">{{prodUploadedItem.status}}</span>
         </div>
         <div class="col-lg-1">
-            <div style="display: flex;">
-                <a href="#" class="link-edit edit-item"><i class="bi bi-pen"></i></a> 
-                
+            <div style="display: flex;" *ngIf="prodUploadedItem.status !== 'Đã duyệt'">
+                <a [routerLink]="['/edit-code-product',prodUploadedItem._id]" class="link-edit edit-item"><i class="bi bi-pen"></i></a>                 
             </div>
         </div>
     </div>

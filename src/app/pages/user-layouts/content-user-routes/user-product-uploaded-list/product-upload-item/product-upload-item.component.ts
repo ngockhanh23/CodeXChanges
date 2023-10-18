@@ -14,6 +14,6 @@ export class ProductUploadItemComponent implements OnInit{
   }
 
   navigateCodeProductDetails(id : String) {
-    alert(id)
+    // alert(id)
   }
 }
