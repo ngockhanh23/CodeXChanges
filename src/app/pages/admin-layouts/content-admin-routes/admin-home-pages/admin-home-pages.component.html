@@ -1,68 +1,107 @@
 <div id="layoutSidenav_content">
-    
-            <main>
-                <div class="container-fluid px-4">
-                   
-                    <h1 class="mt-4">Source code đã upload</h1>
 
-                    <div class="row">
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-primary text-white mb-4">
-                                <div class="card-body">Tất cả</div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="#">24 source code</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-success text-white mb-4">
-                                <div class="card-body">Success Card</div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="#">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-warning text-white mb-4">
-                                <div class="card-body">Warning Card</div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="#">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>                       
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-danger text-white mb-4">
-                                <div class="card-body">Danger Card</div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="#">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                       
-                        <div class="col-xl-6">
-                           
-                        </div>
-                    </div>
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-table me-1"></i>
-                            DataTable Example
-                        </div>
-                        <div class="card-body">
-                            <table id="datatablesSimple">
-                               
-                            </table>
+    <main>
+        <div class="container-fluid px-4">
+
+            <h1 class="mt-4">Source code đã upload</h1>
+
+            <div class="row">
+                <div class="col-xl-3 col-md-6 fill-prod-option" (click)="getAllCodeProd()">
+                    <div class="card bg-primary text-white mb-4">
+                        <div class="card-body">Tất cả</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <span class="small text-white stretched-link" href="#">{{countAllCodeProds}} source code</span>
+                            <div class="small text-white"><i class="bi bi-chevron-right"></i></div>
                         </div>
                     </div>
                 </div>
-            </main>
-            <footer class="py-4 bg-light mt-auto">
+                <div class="col-xl-3 col-md-6 fill-prod-option" (click)="fillApprovedProd()">
+                    <div class="card bg-success text-white mb-4">
+                        <div class="card-body" >Đã phê duyệt</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#">View Details</a>
+                            <div class="small text-white"><i class="bi bi-chevron-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 fill-prod-option" (click)="fillAwaitingApprovalProd()">
+                    <div class="card bg-warning text-white mb-4">
+                        <div class="card-body">Chưa duyệt</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#">View Details</a>
+                            <div class="small text-white"><i class="bi bi-chevron-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 fill-prod-option" (click)="fillRefusedProd()">
+                    <div class="card bg-danger text-white mb-4">
+                        <div class="card-body">Đã từ chối</div>
+                        <div class="card-footer d-flex align-items-center justify-content-between">
+                            <a class="small text-white stretched-link" href="#">View Details</a>
+                            <div class="small text-white"><i class="bi bi-chevron-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <hr>
+
+                <h6>
+                    <i class="bi bi-code-slash"></i>
+                    Danh sách source code upload
+                </h6>
+                <div class="card-body">
+                    <table class="table align-middle mb-0 bg-white">
+                        <thead class="bg-light">
+                            <tr>
+                                <th>Source code</th>
+                                <th>Ngày upload</th>
+
+                                <th>Tài khoản upload</th>
+                                <th>Trạng thái</th>
+                                <th>Actions</th>
+                                <!-- <th>Actions</th> -->
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- item -->
+                            <tr *ngFor="let item of lstCodeProdUploaded.slice().reverse()" [ngClass]="{'awaiting-approval' : item.status === 'Chờ duyệt'}">
+                                <td style="width: 40%;">
+                                    <div class="d-flex align-items-center">
+                                        <img [src]="item.avatar_Url" alt=""
+                                            style="width: 80px; height: 80px; margin-right: 10px;" />
+                                        <div class="ms-3">
+                                            <h6 class="">{{item.code_Title}}</h6>
+
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="d-flex align-items-center">{{item.upload_Date | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+
+                                
+                                <td>
+                                    <p class="fw-normal mb-1">{{item.user_Upload.name}}</p>
+                                    <p class="text-muted mb-0">{{item.user_Upload.email}}</p>
+                                </td>
+                                <td>
+                                    <span class="badge badge-success rounded-pill d-inline" [ngClass]="{'badge-success': item.status === 'Đã duyệt','badge-warning': item.status === 'Chờ duyệt', 'badge-danger': item.status === 'Đã từ chối' }">{{item.status}}</span>
+                                </td>
+                                <td>
+                                    <a [routerLink]="['/detail-code-prod-admin',item._id]" class="view-details-code-prod-icon"><i class="bi bi-eye"></i></a>
+                                </td>
+                            </tr>
+
+                            <!-- item -->
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
                         <div class="text-muted">Copyright &copy; Your Website 2023</div>
@@ -73,5 +112,5 @@
                         </div>
                     </div>
                 </div>
-            </footer>
-        </div>
+            </footer> -->
+</div>

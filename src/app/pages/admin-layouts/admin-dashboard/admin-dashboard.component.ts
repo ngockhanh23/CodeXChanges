@@ -12,7 +12,7 @@ export class AdminDashboardComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    if (this.authServices.adminLoginExisting == null) {
+    if (this.authServices.adminLoginExisting === null) {
       this.router.navigate(['']);
     }
   }

@@ -41,6 +41,8 @@ import { RevenueStatisticsComponent } from './pages/user-layouts/content-user-ro
 import { NotificationComponent } from './pages/user-layouts/content-user-routes/notification/notification.component';
 import { EditProductComponent } from './pages/user-layouts/content-user-routes/edit-product/edit-product.component';
 import { RevenueItemComponent } from './pages/user-layouts/content-user-routes/revenue-statistics/revenue-item/revenue-item.component';
+import { AdminServices } from 'src/services/admin-services';
+import { DetailCodeProdUploadedComponent } from './pages/admin-layouts/content-admin-routes/admin-home-pages/detail-code-prod-uploaded/detail-code-prod-uploaded.component';
 
 
 const lstRoutes: Routes = [
@@ -57,6 +59,8 @@ const lstRoutes: Routes = [
   { path: 'edit-code-product/:id', component: EditProductComponent},
   { path: 'notification', component: NotificationComponent},
   { path: 'revenues', component: RevenueStatisticsComponent},
+  { path: 'detail-code-prod-admin/:id', component: DetailCodeProdUploadedComponent},
+
 
 
   
@@ -88,6 +92,7 @@ const lstRoutes: Routes = [
     NotificationComponent,
     EditProductComponent,
     RevenueItemComponent,
+    DetailCodeProdUploadedComponent,
 
     
   ],
@@ -108,7 +113,7 @@ const lstRoutes: Routes = [
     
   ],
   exports: [RouterModule],
-  providers: [DatePipe,UserServices],
+  providers: [DatePipe,UserServices, AdminServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

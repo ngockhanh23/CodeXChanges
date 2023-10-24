@@ -1,0 +1,133 @@
+<div id="layoutSidenav_content">
+
+    <main>
+        <div class="container-fluid px-4">
+            <div class="modal" *ngIf="imgClickUrl">
+                <div class="modal-content">
+                    <span class="close-modal" (click)="clearPictureClick()">&times;</span>
+                    <div class="img-complete-cover">
+                        <img [src]="imgClickUrl" alt="" class="img-detail-view">
+
+                    </div>
+
+                </div>
+            </div>
+
+            <hr>
+            <div style="display: flex; align-items: center;">
+                <button [routerLink]="['/admin-home']" class="btn"><i class="bi bi-arrow-left"></i></button>
+                <span class="title-detail-code-prod-admin">{{codeProd.code_Title}}</span>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-4" style="border-right: 1px solid rgb(211, 211, 211);">
+                    <img [src]="codeProd.avatar_Url" alt="" class="img-detail"
+                        (click)="showPictureClick(codeProd.avatar_Url)">
+
+                    <div class="row" style="margin-top: 20px;">
+                        <div class="col-lg-6 img-item" *ngFor="let item of codeProd.images"
+                            (click)="showPictureClick(item)">
+                            <img [src]="item" alt="" class="img-detail">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-8">
+                    <!-- <div class="lst-img-detail">
+                        <div class="img-item" *ngFor="let item of codeProd.images">
+                            <img [src]="item" alt="" class="img-detail">
+                        </div>
+                    </div> -->
+
+                    <div class="product-details">
+                        <div class="box-user box-user-upload">
+                            <div class="infor-upload-user">
+                                <h4 style="color: gray;">Người đăng tải: </h4>
+                                <img [src]="codeProd.user_Upload.avatar_Url" alt="">
+
+                                <h4>{{codeProd.user_Upload.name}}</h4>
+                            </div>
+
+                        </div>
+
+                        <strong>Danh mục:</strong> <br>
+                        <input type="text" class="form-control" [value]=" codeProd.category.category_Name"
+                            [disabled]="true">
+                        <hr>
+                        <strong>Mô tả:</strong> <br>
+                        <input type="text" class="form-control" [value]=" codeProd.code_Description" [disabled]="true">
+                        <hr>
+
+                        <strong>Hướng dẫn cài đặt:</strong> <br>
+                        <textarea type="text" class="form-control" [value]=" codeProd.install_Instruction"
+                            [disabled]="true"> </textarea>
+                        <hr>
+
+                        <strong>Phí tải: </strong>{{ codeProd.download_Price }} xu
+                        <hr>
+
+                        <strong>Lượt download: </strong> {{ codeProd.number_Of_Download }}
+                        <hr>
+
+                        <strong>Lượt xem: </strong> {{ codeProd.number_Of_View }}
+                        <hr>
+
+                        <strong>Nhóm code: </strong> {{ codeProd.product_Group }}
+                        <hr>
+
+                        <strong>Link: </strong>
+                        <a class="btn btn-link" [href]="codeProd.demo_Video_Link">Demo Video</a>
+                        <span style="margin-right: 10px;"></span>
+                        <a class="btn btn-link" [href]="codeProd.download_Link">Download Link</a>
+                        <hr>
+                        <div class="rating">
+                            <h6>Đánh giá ({{codeProd.comments.length}})</h6>
+                            <div class="comment-list rating-list">
+                                <!-- comment-1 -->
+                                <div class="box-cmt" *ngFor="let item of codeProd.comments ">
+                                    <div class="box-user">
+                                        <img [src]="item.user_Comment.avatar_Url" alt="">
+
+                                        <h6>{{item.user_Comment.name}}</h6>
+                                    </div>
+                                    <div class="comment-text">
+                                        <div class="triangle"></div>
+                                        <div class="star-group">
+                                            <i *ngFor="let star of [1, 2, 3, 4, 5]" class="bi bi-star-fill"
+                                                [ngClass]="{ 'text-warning': star <= item.rating_Starts }"></i>
+
+                                        </div>
+                                        <p style="margin: 5px 0px;"> {{item.comment_Content}} </p>
+
+                                        <small class="day-comment">{{item.comment_Date}}</small>
+
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <hr>
+
+
+
+                        <!-- <p><strong>Status:</strong> {{ codeProd.status }}</p> -->
+                        <strong>Status:</strong>
+                        
+                        <select class="form-control" style="width: 30%;"  [(ngModel)]="statusOption" >
+                            <option value="Đã duyệt">Đã duyệt</option>
+                            <option value="Chờ duyệt">Chờ duyệt</option>
+                            <option value="Đã từ chối">Từ chối</option>
+                        </select>
+                        <br>
+                        <button class="btn btn-success save-status-prod" *ngIf="statusOption !== codeProd.status" (click)="saveStatusCodeProd()">Lưu trạng thái duyệt sản phẩm</button>
+                  
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
