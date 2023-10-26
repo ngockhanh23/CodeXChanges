@@ -15,10 +15,18 @@ export class AdminHomePagesComponent implements OnInit {
 
   constructor(private authServices: AuthServices, private router: Router, private adminServices : AdminServices) {}
   ngOnInit(): void {
-    const loginExists = localStorage.getItem('account_id');    
-    if (loginExists === null) {
-      this.router.navigate(['/']);
-    }
+     //check role user login
+     const loginExists = localStorage.getItem('account_id');    
+     if (loginExists === null) {
+       this.router.navigate(['/']);
+     }
+     this.authServices.checkRoleAccount(loginExists!).subscribe((res) => {
+       if (res.role === "user") {
+         this.router.navigate(['/']);
+       }      
+     });
+
+    
 
     this.adminServices.getAllCodeProducts().subscribe((res) => {
       this.lstCodeProdUploaded = res;

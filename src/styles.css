@@ -1551,3 +1551,21 @@
 .head-title-admin-dashboard{
     padding: 10px;
 }
+.view-details-code-prod-icon{
+    font-size: 25px;
+    color: gray;
+}
+.view-details-code-prod-icon:hover{
+    opacity: 0.5;
+}
+.awaiting-approval{
+    background-color: rgb(236, 236, 236);
+    border-left: 3px solid var(--primary-color);
+}
+.fill-prod-option{
+    cursor: pointer;
+    transition: 0.3s;
+}
+.fill-prod-option:hover{
+    opacity: 0.5;
+}

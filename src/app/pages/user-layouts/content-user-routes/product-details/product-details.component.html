@@ -264,8 +264,8 @@
                                         <div class="triangle"></div>
                                         <div class="star-group">
                                             
-                                            <i *ngFor="let star of [1, 2, 3, 4, 5]" class="bi bi-star-fill" [ngClass]="{ 'text-warning': star <= item.rating_Starts }"></i>
-                                            
+                                            <i style="color: goldenrod;" *ngFor="let star of [1, 2, 3, 4, 5]" class="bi" [ngClass]="{'bi-star-fill': star <= item.rating_Starts, 'bi-star' : star > item.rating_Starts}"></i>
+                                            <!-- {{item.rating_Starts}} -->
                                           </div>
                                         <p style="margin: 5px 0px;"> {{item.comment_Content}} </p>
                                         

@@ -27,6 +27,10 @@ export class AdminServices {
   saveCensorshipProd(censorshipPost : any) : Observable<any> {
     return this.http.post('http://localhost:3000/code-products/product-censorship', censorshipPost);
   }
+  //user feature
+  getListUsers(): Observable<any> {
+    return this.http.get('http://localhost:3000/users');
+  }
 
  
 

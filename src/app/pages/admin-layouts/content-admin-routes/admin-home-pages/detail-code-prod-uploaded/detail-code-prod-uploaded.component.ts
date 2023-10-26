@@ -22,10 +22,19 @@ export class DetailCodeProdUploadedComponent implements OnInit{
   constructor(private authServices: AuthServices, private userServices: UserServices, private route: ActivatedRoute, private router: Router, private adminServices : AdminServices, private toastr: ToastrService) { }
   
   ngOnInit(): void {
+    //check role user login
     const loginExists = localStorage.getItem('account_id');    
     if (loginExists === null) {
       this.router.navigate(['/']);
     }
+    this.authServices.checkRoleAccount(loginExists!).subscribe((res) => {
+      if (res.role === "user") {
+        this.router.navigate(['/']);
+      }      
+    });
+
+
+    
     this.route.params.subscribe(() => {
       let idCodeProd = this.route.snapshot.params['id'];
         // alert(idCodeProd)

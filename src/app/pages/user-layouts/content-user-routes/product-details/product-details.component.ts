@@ -43,13 +43,12 @@ export class ProductDetailsComponent implements OnInit {
 
 
 
-
-
       this.userServices.getCodeProductById(idCodeProd).subscribe((res) => {
         this.codeProd = res;
         // this.codeProd.comments.reverse();
         this.updateCommentList();
 
+        this.userServices.updateNumberOfView(this.codeProd).subscribe((res) => {}, (error) =>{console.log(error.message)})
         this.ratingAverages = this.getRatingAverages();
 
         this.userServices.getApprovedProductList().subscribe((res) => {
@@ -59,7 +58,7 @@ export class ProductDetailsComponent implements OnInit {
         this.setTransactionUserStatus();
 
 
-        this.userServices.updateNumberOfView(this.codeProd).subscribe((res) => { })
+        
       });
       window.scrollTo(0, 0);
       // console.log(this.userLogin)
@@ -213,6 +212,7 @@ export class ProductDetailsComponent implements OnInit {
   sendRating(form: NgForm) {
     if (!this.userLogin) {
       this.router.navigate(['/login']);
+      return;
     }
     if (!this.transactionUserCheck) {
       this.dialogService.openConfirmationDialog("Bạn chưa mua source code này xài thử nên bạn không có tư cách để đánh giá, muốn mua không ?", "Không", "Mua ngay").afterClosed().subscribe((result) => {

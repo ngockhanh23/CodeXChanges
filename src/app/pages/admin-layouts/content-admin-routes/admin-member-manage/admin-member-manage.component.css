@@ -1,0 +1,11 @@
+.table-row{
+    padding: 10px;
+}
+.table-item-link{
+    color: black;
+    text-decoration: none;
+}
+.table-row-item:hover{
+    background-color: rgb(242, 242, 242);
+    transition: 0.3s;
+}

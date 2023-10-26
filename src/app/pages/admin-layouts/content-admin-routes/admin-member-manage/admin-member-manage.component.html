@@ -1,0 +1,115 @@
+<div id="layoutSidenav_content">
+
+    <main>
+        <div class="container-fluid px-4">
+            <h3><i class="bi bi-people"></i> Quản lý thành viên</h3>
+            <!-- <hr>
+            <div class="revenue-box">
+                <div class="row">
+                    <div class="col-lg-6 row align-items-end">
+                        <div class="col-lg-4">
+                            <span>Từ ngày</span>
+                            <input type="date" class="form-control">
+                        </div>
+                        <div class="col-lg-4">
+                            <span>Đến ngày</span>
+                            <input type="date" class="form-control">
+                        </div>
+                        <div class="col-lg-4">
+                            <button class="btn btn-info" style="width: 100%;"><i class="bi bi-graph-up"></i> Thống
+                                kê</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+
+                    </div>
+                </div>
+            </div><br> -->
+            <hr>
+            <div class="revenue-box">
+                <div class="row">
+                    <div class="col-lg-6 row align-items-end">
+                        <div class="col-lg-8">
+                            <span>Tìm kiếm</span>
+                            <input type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm">
+                        </div>
+                        
+                        <div class="col-lg-4">
+                            <button class="btn btn-info" style="width: 100%;"><i class="bi bi-search"></i> Tìm kiếm</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+
+                    </div>
+                </div>
+            </div><br>
+
+            <div>
+                <hr>
+
+                <h6>
+                    <i class="bi bi-people"></i>
+                    Danh sách thành viên
+                </h6>
+                <hr>
+                <div class="card-body">
+                    <div class="table align-middle mb-0 bg-white">
+                        <div class="bg-light">
+                            <div class="row table-row">
+                                <div class="col-lg-4">Người dùng</div>
+                                <div class="col-lg-3">Số điện thoại</div>
+
+                                <div class="col-lg-2 d-flex justify-content-center">Số source code đăng tải</div>
+                                <div class="col-lg-2 d-flex justify-content-center">Số xu</div>
+
+
+                                <div class="col-lg-1">Actions</div>
+                                <!-- <th>Actions</th> -->
+
+                            </div>
+                            
+                        </div>
+
+                        <!-- item -->
+                        <a [routerLink]="['/detail-member-infor', item._id]" class="table-item-link" *ngFor="let item of lstUser.slice().reverse()">
+
+                            <div class="row table-row table-row-item" style="align-items: center;">
+                                <div class="col-lg-4">
+                                    <div class="d-flex align-items-center">
+                                        <img [src]="item.avatar_Url" alt="" style="width: 80px; height: 80px; margin-right: 10px; border-radius: 50%;" />
+                                        <div class="ms-3">
+                                            <h6 class="">{{item.name}}</h6>
+                                            <p class="text-muted mb-0">{{item.email}}</p>
+    
+                                        </div>
+                                    </div>
+    
+                                </div>
+                                <div class="col-lg-3">
+                                    {{item.phone_Number}}
+                                </div>
+    
+                                <div class="col-lg-2 d-flex justify-content-center">{{item.code_Products.length}}</div>
+                                <div class="col-lg-2 d-flex justify-content-center">{{item.coin_Balance}} xu</div>
+
+    
+                                <div class="col-lg-1"><a href="#" class="view-details-code-prod-icon"><i class="bi bi-eye"></i></a></div>
+                                
+                            </div>
+                            <hr>
+
+                        </a>
+                        <!-- end item -->
+
+
+                        
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </main>
+</div>

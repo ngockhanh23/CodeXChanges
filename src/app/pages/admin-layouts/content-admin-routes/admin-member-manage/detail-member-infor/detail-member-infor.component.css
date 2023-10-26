@@ -1,0 +1,33 @@
+.user-information{
+    
+    border-right: 0.5px solid rgb(224, 224, 224);
+    text-align: center;
+    padding-right: 10px;
+}
+.infor-user img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    display: inline-block;
+    display: inline-block;
+    margin: 10px auto;
+}
+.infor-user h4{
+    text-align: center;
+}
+.infor-user h6{
+    color: gray;
+}
+.transaction-item{
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 10px;
+    margin: 10px 0;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.link-prod{
+    color: black;
+    text-decoration: none;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+}
+

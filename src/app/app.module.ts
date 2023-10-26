@@ -43,6 +43,9 @@ import { EditProductComponent } from './pages/user-layouts/content-user-routes/e
 import { RevenueItemComponent } from './pages/user-layouts/content-user-routes/revenue-statistics/revenue-item/revenue-item.component';
 import { AdminServices } from 'src/services/admin-services';
 import { DetailCodeProdUploadedComponent } from './pages/admin-layouts/content-admin-routes/admin-home-pages/detail-code-prod-uploaded/detail-code-prod-uploaded.component';
+import { AdminMemberManageComponent } from './pages/admin-layouts/content-admin-routes/admin-member-manage/admin-member-manage.component';
+import { DetailMemberInforComponent } from './pages/admin-layouts/content-admin-routes/admin-member-manage/detail-member-infor/detail-member-infor.component';
+import { WithdrawalRequestComponent } from './pages/user-layouts/content-user-routes/withdrawal-request/withdrawal-request.component';
 
 
 const lstRoutes: Routes = [
@@ -60,6 +63,10 @@ const lstRoutes: Routes = [
   { path: 'notification', component: NotificationComponent},
   { path: 'revenues', component: RevenueStatisticsComponent},
   { path: 'detail-code-prod-admin/:id', component: DetailCodeProdUploadedComponent},
+  { path: 'admin-member-manage', component: AdminMemberManageComponent},
+  { path: 'detail-member-infor/:id', component: DetailMemberInforComponent},
+
+
 
 
 
@@ -93,6 +100,9 @@ const lstRoutes: Routes = [
     EditProductComponent,
     RevenueItemComponent,
     DetailCodeProdUploadedComponent,
+    AdminMemberManageComponent,
+    DetailMemberInforComponent,
+    WithdrawalRequestComponent,
 
     
   ],
