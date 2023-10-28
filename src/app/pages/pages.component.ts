@@ -10,11 +10,18 @@ import { AuthServices } from 'src/services/authentication-service';
 export class PagesComponent implements OnInit {
 
   adminLogin: any;
+  userLogin:any;
 
-  constructor(private authServices: AuthServices, private router: Router) { }
+  constructor(private authServices: AuthServices, private router: Router) { 
+    // this.adminLogin = null;
+    // this.userLogin = null;
+  }
   ngOnInit(): void {
     this.authServices.adminLoginEmitter.subscribe((account) =>
       this.adminLogin = account
+    );
+    this.authServices.userLoginEmitter.subscribe((account) =>
+      this.userLogin = account
     );
     const loginExists = localStorage.getItem('account_id');
     console.log("user login : " + loginExists)
@@ -23,8 +30,8 @@ export class PagesComponent implements OnInit {
       this.authServices.checkRoleAccount(loginExists).subscribe((res) => {
         if (res.role === "user") {
           this.authServices.getUserById(loginExists).subscribe((res) => {
-            this.authServices.setUserLogged(res)
-          })
+            this.authServices.setUserLogged(res);
+          });
         }
         else if (res.role === "admin") {
           this.authServices.getAdminAccountById(loginExists).subscribe((res) => {
@@ -40,5 +47,12 @@ export class PagesComponent implements OnInit {
     // else
     
     // this.authServices.clearUserLogged()
+  }
+
+  ngAfterViewInit() {
+    // if(this.userLogin === null|| this.adminLogin === null){
+      this.authServices.setUserLogged(this.userLogin);
+      this.authServices.setAdminLogged(this.adminLogin);
+    // }
   }
 }

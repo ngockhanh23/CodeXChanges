@@ -46,6 +46,8 @@ import { DetailCodeProdUploadedComponent } from './pages/admin-layouts/content-a
 import { AdminMemberManageComponent } from './pages/admin-layouts/content-admin-routes/admin-member-manage/admin-member-manage.component';
 import { DetailMemberInforComponent } from './pages/admin-layouts/content-admin-routes/admin-member-manage/detail-member-infor/detail-member-infor.component';
 import { WithdrawalRequestComponent } from './pages/user-layouts/content-user-routes/withdrawal-request/withdrawal-request.component';
+import { AdminNotificationComponent } from './pages/admin-layouts/content-admin-routes/admin-notification/admin-notification.component';
+import { PaymentServices } from 'src/services/payment-services';
 
 
 const lstRoutes: Routes = [
@@ -64,7 +66,11 @@ const lstRoutes: Routes = [
   { path: 'revenues', component: RevenueStatisticsComponent},
   { path: 'detail-code-prod-admin/:id', component: DetailCodeProdUploadedComponent},
   { path: 'admin-member-manage', component: AdminMemberManageComponent},
+  { path: 'admin-notification', component: AdminNotificationComponent},
+
   { path: 'detail-member-infor/:id', component: DetailMemberInforComponent},
+  { path: 'withdrawal', component: WithdrawalRequestComponent},
+
 
 
 
@@ -103,6 +109,7 @@ const lstRoutes: Routes = [
     AdminMemberManageComponent,
     DetailMemberInforComponent,
     WithdrawalRequestComponent,
+    AdminNotificationComponent,
 
     
   ],
@@ -123,7 +130,7 @@ const lstRoutes: Routes = [
     
   ],
   exports: [RouterModule],
-  providers: [DatePipe,UserServices, AdminServices],
+  providers: [DatePipe,UserServices, AdminServices, PaymentServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

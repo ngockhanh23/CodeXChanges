@@ -42,8 +42,7 @@ import { Observable } from 'rxjs';
       this.userLoginExisting = user;
       this.userLoginEmitter.emit(this.userLoginExisting);
       localStorage.setItem('account_id', user._id);
-      // this.coinBalanceUser = user.coin_Balance;
-      // console.log(this.userLoginExisting)
+
     }
     
 
@@ -51,6 +50,7 @@ import { Observable } from 'rxjs';
     getUserLoginExisting(){
       return this.userLoginExisting;
     }
+
     clearUserLogged(){
 
       this.userLoginExisting = null;

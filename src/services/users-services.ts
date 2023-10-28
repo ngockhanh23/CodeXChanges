@@ -66,4 +66,6 @@ export class UserServices {
     return this.http.post('http://localhost:3000/users/update-status-notification-user', userNotification );
   }
 
+  
+
 }

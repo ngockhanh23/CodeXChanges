@@ -1,1 +1,72 @@
-<p>withdrawal-request works!</p>
+
+<div class="container user-content">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><h4>Rút tiền</h4></li>            
+        </ol>
+    </nav>
+
+    <form action="#"  class="form-withdrawal">
+
+        <div class="withdrawal-form-control">
+            <div class="row withdrawal-item">
+                <div class="col-lg-6" style="width: 50%; text-align: end;" ><span>Số xu hiện có:</span></div>
+                <div class="col-lg-6"> <span class="coin-balance">105</span> xu</div>
+            </div>
+            
+        </div>
+        <div class="withdrawal-form-control">
+            <div class="row withdrawal-item">
+                <div class="col-lg-6" style="width: 50%; text-align: end;" ><span>Thông tin tài khoản rút tiền: <br> <small>(Tên ngân hàng - Số tk)</small></span></div>
+                <div class="col-lg-6">
+                    <textarea class="form-control" style="height: 100%;" placeholder="Thông tin tài khoản"></textarea>
+                </div>
+            </div>
+            
+        </div>
+        <div class="withdrawal-form-control">
+            <div class="row withdrawal-item">
+                <div class="col-lg-6" style="width: 50%; text-align: end;" ><span>Số tiền muốn rút</span></div>
+                <div class="col-lg-6">
+                    <input type="number" name="" id="" class="form-control" min="0"> <br>
+                    <span>=> Số tiền nhận được : 0đ</span>
+                    
+                </div>
+            </div>
+            
+        </div>
+        <div class="withdrawal-form-control">
+            <button class="btn btn-primary-design" type="submit"><i class="bi bi-cash-coin"></i> Gửi yêu cầu rút tiền</button>
+            
+        </div>
+
+    </form>
+    <hr>
+    <div class="pro-note">
+        <div class="note">
+            <strong>Ghi chú</strong>
+            <div>
+                <ul>
+                    <li>Số XU rút tổi thiểu phải là 200 XU/Lần.</li>
+                    <li>Chỉ hỗ trợ rút tiền cho các thành viên bán code, không hỗ các giao dịch nạp tiền rồi lại rút ra mà không thực hiện mua code.</li>
+                    <li>CodeXChanges chốt lệnh rút tiền vào 17H hàng ngày và chuyển tiền trong vòng 24H.</li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="des-detail-area" style="margin-top: 80px;">
+        <div class="title-description"><span>Lịch sử rút tiền</span></div>
+
+        <div class="prod-details-description">
+            <p>
+                <!-- {{codeProd.install_Instruction}} -->
+            </p>
+        </div>
+    </div>
+
+</div>
+
+
+

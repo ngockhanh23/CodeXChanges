@@ -16,8 +16,13 @@ export class NotificationComponent implements OnInit{
   constructor(private userServices : UserServices, private authServices : AuthServices, private router : Router){}
   ngOnInit(): void {
     this.authServices.clearAdminAccountLogged();
+    
     //check login user
-    this.userLogin = this.authServices.userLoginExisting;
+    this.userLogin = this.authServices.getUserLoginExisting();
+
+    if(!this.userLogin){
+      this.router.navigate(['/login']);
+    }
     this.authServices.userLoginEmitter.subscribe((user) => {
       this.userLogin = user;
       // this.lstNotification = this.userLogin.notification.reverse();
@@ -25,9 +30,7 @@ export class NotificationComponent implements OnInit{
     });
     this.lstNotification = this.userLogin.notification;
 
-    if(!this.userLogin){
-      this.router.navigate(['/login']);
-    }
+    
 
   }
 
@@ -45,11 +48,11 @@ export class NotificationComponent implements OnInit{
         });
 
       }, (error) => {console.log(error.message)})
-      console.log('haha')
-      return
+      // console.log('haha')
+      return;
     }
     this.notificationNavigateHandle(notification.type_Notification);
-    console.log('vcl')
+    // console.log('vcl')
 
 
   }
