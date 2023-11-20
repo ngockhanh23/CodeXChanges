@@ -1,0 +1,29 @@
+<!-- noti-adminNotificationItem -->
+<div (click)="navigateNotification(adminNotificationItem)"  class="noti-link" >
+    <div class="row noti-item " [ngClass]="{'unread-noti' : adminNotificationItem.status_Notification === false}">
+        <div class="col-lg-8">
+            <div class="col-lg-12">
+                <div class="d-flex align-item-center">
+                    <img [src]="adminNotificationItem.user_Interaction.avatar_Url"
+                        alt=""
+                        style="width: 80px; height: 80px; margin-right: 10px; border-radius: 50%;" />
+                    <div class="ms-3">
+                        <h6 class="">{{adminNotificationItem.title_Notification}}</h6>
+                        <p class="text-muted mb-0">{{adminNotificationItem.message_Detail}}</p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-2 d-flex align-item-center">{{adminNotificationItem. date_Notifiaction}}</div>
+        <div class="col-lg-2 d-flex align-item-center">
+            <div class="dot" *ngIf="adminNotificationItem.status_Notification === false">
+                <div class="dot-display"></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!-- noti-adminNotificationItem -->

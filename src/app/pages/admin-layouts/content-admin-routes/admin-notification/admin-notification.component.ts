@@ -11,7 +11,7 @@ import { AuthServices } from 'src/services/authentication-service';
 export class AdminNotificationComponent implements OnInit{
 
   adminLogged : any;
-  constructor(private router: Router,private adminServices : AdminServices,private authServices: AuthServices,){}
+  constructor(private router: Router,private adminServices : AdminServices,private authServices: AuthServices){}
   ngOnInit(): void {
     // check role user login
     const loginExists = localStorage.getItem('account_id');    

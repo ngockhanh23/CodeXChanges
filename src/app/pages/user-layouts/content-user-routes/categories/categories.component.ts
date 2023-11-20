@@ -12,6 +12,7 @@ import { AuthServices } from 'src/services/authentication-service';
 export class CategoriesComponent implements OnInit {
 
   category:any;
+  lstProdsByCate :any;
 
   constructor( private authServices: AuthServices, private userServices: UserServices, private route: ActivatedRoute){}
   ngOnInit(): void {
@@ -24,13 +25,36 @@ export class CategoriesComponent implements OnInit {
 
       this.userServices.getCategoryByID(idCate).subscribe(
         (res) => {
-          this.category = res
+          this.category = res;
+          this.lstProdsByCate = this.category.codeProducts;
         },
         (error) => {
           console.error(error);
         }
       );
-    })
+    });
+  }
+
+  sortProductByTime(){
+    
+    this.lstProdsByCate = this.category.codeProducts.sort((a:any, b:any) => {
+      const dateA = new Date(a.upload_Date);
+      const dateB = new Date(b.upload_Date);
+      return dateB.getTime() - dateA.getTime();
+    });
+
+  }
+
+  sortProductByDownloadCount(){
+    this.lstProdsByCate = this.category.codeProducts.sort((a: any, b: any) => {
+      return b.number_Of_Download - a.number_Of_Download;
+    });
+  }
+
+  sortProductByNumberOfView(){
+    this.lstProdsByCate = this.category.codeProducts.sort((a: any, b: any) => {
+      return b.number_Of_View - a.number_Of_View;
+    });
   }
   
 }

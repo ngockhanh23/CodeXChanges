@@ -77,10 +77,12 @@ export class UploadProductsPageComponent implements OnInit {
         return;
       }
 
-      await this.uploadProductImages();
+      await Promise.all([this.uploadProductImages()]);
       if(this.lstProductImgs){
-        await this.uploadProductImagesList();
+        await Promise.all([this.uploadProductImagesList()]);
       }    
+
+      // await Promise.all([this.uploadProductImages(), this.uploadProductImagesList()]);
 
       //data code prod
       const dataCodeProdUpload = {
@@ -101,7 +103,7 @@ export class UploadProductsPageComponent implements OnInit {
       }
 
       this.userServices.uploadCodeProduct(dataCodeProdUpload).subscribe((res) =>{
-        console.log(res);
+        // console.log(res);
 
         this.authServices.getUserById(this.userLogin._id).subscribe((res) =>{
           this.authServices.setUserLogged(res);
@@ -124,6 +126,83 @@ export class UploadProductsPageComponent implements OnInit {
       }
     }
   }
+
+
+
+  async uploadProductImagesList() {
+
+    for (const imgFile of this.lstProductImgs) {
+      this.uploading = true
+      if (imgFile) {
+        const currentTime = new Date();
+        const filePath = `${this.userLogin._id}/code-products/${currentTime.getTime()}${imgFile.name}`;
+
+        const storageRef = this.fireStorage.ref(filePath);
+        const uploadTask = storageRef.put(imgFile);
+
+        // Sử dụng Promise để chờ việc tải lên hoàn thành
+        const snapshot = await uploadTask;
+
+        if (snapshot.state === 'success') {
+          storageRef.getDownloadURL().subscribe(downloadURL => {
+          // this.uploading = false;
+            this.lstProductImgsUploaded.push(downloadURL)
+          });
+        }
+      }
+    }
+    
+  }
+
+ 
+  async uploadProductImages(){
+    if (this.avatarImageUrl) {
+      this.uploading = true;
+      const currentTime = new Date();
+      const filePath = `${this.userLogin._id}/code-products/${currentTime.getTime()}${this.avatarImgFile.name}`;
+
+      const storageRef = this.fireStorage.ref(filePath);
+      const uploadTask = storageRef.put(this.avatarImgFile);
+
+      uploadTask.snapshotChanges().subscribe((snapshot: any) => {
+        if (snapshot.state === 'success') {
+          storageRef.getDownloadURL().subscribe(downloadURL => {
+            console.log('URL ảnh:', downloadURL);
+            this.avatarUrlUploaded = downloadURL;
+            // this.uploading = false
+            // return true
+          });
+        }
+      });
+    }
+  }
+
+
+
+
+  // async uploadProductImages(): Promise<any> {
+  //   return new Promise((resolve, reject) => {
+  //     if (this.avatarImageUrl) {
+  //       this.uploading = true;
+  //       const currentTime = new Date();
+  //       const filePath = `${this.userLogin._id}/code-products/${currentTime.getTime()}${this.avatarImgFile.name}`;
+  
+  //       const storageRef = this.fireStorage.ref(filePath);
+  //       const uploadTask = storageRef.put(this.avatarImgFile);
+  
+  //       uploadTask.snapshotChanges().subscribe((snapshot: any) => {
+  //         if (snapshot.state === 'success') {
+  //           storageRef.getDownloadURL().subscribe(downloadURL => {
+  //             console.log('URL ảnh:', downloadURL);
+  //             this.avatarUrlUploaded = downloadURL;
+  //             this.uploading = false;
+  //             resolve(null); // Đánh dấu hàm đã hoàn tất thành công.
+  //           });
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
 
   getCodeGroupByPrice(price : number){
     if(price === 0 || price < 0)
@@ -157,7 +236,6 @@ export class UploadProductsPageComponent implements OnInit {
     }
   }
 
-
   onPictureProductDemoSelected(event: any) {
     this.lstProductImgs = event.target.files;
     if (this.lstProductImgs && this.lstProductImgs.length > 0) {
@@ -182,52 +260,8 @@ export class UploadProductsPageComponent implements OnInit {
   }
 
  
-  async uploadProductImages(){
-    if (this.avatarImageUrl) {
-      this.uploading = true;
-      const currentTime = new Date();
-      const filePath = `${this.userLogin._id}/code-products/${currentTime.getTime()}${this.avatarImgFile.name}`;
 
-      const storageRef = this.fireStorage.ref(filePath);
-      const uploadTask = storageRef.put(this.avatarImgFile);
-
-      uploadTask.snapshotChanges().subscribe((snapshot: any) => {
-        if (snapshot.state === 'success') {
-          storageRef.getDownloadURL().subscribe(downloadURL => {
-            console.log('URL ảnh:', downloadURL);
-            this.avatarUrlUploaded = downloadURL;
-            // this.uploading = false
-            // return true
-          });
-        }
-      });
-    }
-  }
-
-  async uploadProductImagesList() {
-
-    for (const imgFile of this.lstProductImgs) {
-      this.uploading = true
-      if (imgFile) {
-        const currentTime = new Date();
-        const filePath = `${this.userLogin._id}/code-products/${currentTime.getTime()}${imgFile.name}`;
-
-        const storageRef = this.fireStorage.ref(filePath);
-        const uploadTask = storageRef.put(imgFile);
-
-        // Sử dụng Promise để chờ việc tải lên hoàn thành
-        const snapshot = await uploadTask;
-
-        if (snapshot.state === 'success') {
-          storageRef.getDownloadURL().subscribe(downloadURL => {
-          // this.uploading = false;
-            this.lstProductImgsUploaded.push(downloadURL)
-          });
-        }
-      }
-    }
-    
-  }
+  
   openModal() {
     this.successModal!.nativeElement.style.display = 'block';
   }

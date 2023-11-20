@@ -1,0 +1,16 @@
+
+
+<div class="row lst-prod-item" style="justify-content: center;">
+    <div class="col-lg-3 row" style="align-items: center;  justify-content: center;">
+
+        <div class="col-lg-12">{{depositHistoryItem._id}}</div>
+    </div>
+    <div class="col-lg-9 row" style="align-items: center; justify-content: center;">
+        <div class="col-lg-3">{{depositHistoryItem.date_Transactions | date: 'dd/MM/yyyy HH:mm:ss'}}</div>
+        <div class="col-lg-4">{{depositHistoryItem.mode_Of_Payment}}</div>
+        <div class="col-lg-2">{{depositHistoryItem.amount_Coins}}</div>
+        <div class="col-lg-3"><small class="badge badge-success">Thành công</small></div>
+
+    </div>
+</div>
+<hr>

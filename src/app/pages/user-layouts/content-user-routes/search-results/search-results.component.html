@@ -1,0 +1,67 @@
+<div class="container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+            <li class="breadcrumb-item">Tìm kiếm</li>
+            <li class="breadcrumb-item">{{searchKey}}</li>
+
+                      </ol>
+    </nav>
+    
+    <div class="main-details-content">
+        <div class="row">
+            <div class="col-lg-9" style="margin-top: 20px;">                    
+    
+                <div class="content-list-product">
+                    <div class="title-product-box">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <h3>Kết quả tìm kiếm</h3>
+                            </div>
+    
+                            <div class="col-lg-8 sort-category-item">
+                                <!-- <span>Sắp xếp theo</span> -->
+                                <button class="btn" (click)="sortProductByTime()">Mới nhất</button>
+                                <button class="btn" (click)="sortProductByDownloadCount()">Tải nhiều nhất</button>
+                                <button class="btn" (click)="sortProductByNumberOfView()">Xem nhiều nhất</button>
+                                <!-- <button class="btn">Miễn phí</button> -->
+    
+    
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h5 style="color: gray;"><i class="bi bi-search"></i> Kết quả tìm kiếm cho "{{searchKey}}"</h5>
+                        <br>
+                    </div>
+                    <div class="row">
+                        <app-product-cards *ngFor="let item of lstCodeProds.slice().reverse()" [codeProductItem]="item"  class="col-lg-3 card-product-item"></app-product-cards>
+                    </div>
+    
+                    <!-- <div class="pagination">
+                        <a href="#" class="prev">&laquo; Trước</a>
+                        <a href="#" class="page">1</a>
+                        <a href="#" class="page">2</a>
+                        <a href="#" class="page">3</a>
+                        <a href="#" class="next">Sau &raquo;</a>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-lg-3">                       
+    
+                <div id="left-scroll">
+                    <a href="#">
+                        <img src="https://sharecode.vn/assets/images/Ra-mat-topcode.jpg" alt="" style="height: 100%; width: 60%;">
+                    </a>
+    
+                </div>
+            </div>
+        </div>
+    
+      
+        
+    
+    
+    </div>
+    
+</div>

@@ -1,0 +1,16 @@
+<div class="row lst-withdrawal-item" style="justify-content: center;">
+    <div class="col-lg-8 row" style="align-items: center;  justify-content: center;">
+        
+        <div class="col-lg-4">{{withdrawalItem.date_Transaction | date: 'dd/MM/yyyy HH:mm:ss'}}</div>
+        <div class="col-lg-8">{{withdrawalItem.bank_Account}}</div>
+
+    </div>
+    <div class="col-lg-4 row" style="align-items: center; justify-content: center;">
+        <div class="col-lg-5">{{withdrawalItem.amount_Coins*1000 |  currency:'VND':''}} ₫</div>
+        <div class="col-lg-5"><span style="font-size: 15px;" class="badge" [ngClass]="{'badge-warning' : withdrawalItem.status==='Đang chờ','badge-success' : withdrawalItem.status==='Đã gửi'  }">{{withdrawalItem.status}}</span></div>
+        
+        <div class="col-lg-2"> <button class="btn-delete" *ngIf="withdrawalItem.status==='Đang chờ'"><i class="bi bi-trash3"></i> </button></div>
+
+    </div>
+</div>
+<hr>

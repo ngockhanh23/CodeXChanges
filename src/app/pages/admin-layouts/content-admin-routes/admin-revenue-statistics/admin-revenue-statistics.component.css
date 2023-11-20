@@ -1,0 +1,51 @@
+.tab-selected {
+    background-color: rgb(211, 211, 211);
+    
+    border-top: 1px solid rgb(213, 213, 213);
+    /* 1px độ rộng, solid là loại đường viền, #000 là màu đường viền */
+
+    /* Đường viền phía dưới */
+    border-left: 1px solid rgb(213, 213, 213);
+
+    /* Đường viền bên phải */
+    border-right: 1px solid rgb(213, 213, 213);
+    /* border-radius: 15px 15px 0px 0px; */
+    cursor: pointer;
+}
+
+.tab-normal {
+    cursor: pointer;
+    border: 1px solid rgb(213, 213, 213);
+    color: black;
+    /* border-radius: 15px 15px 0px 0px; */
+
+}
+.tab-content{
+    padding: 10px;
+}
+.table-data{
+    border: 1px solid rgb(217, 217, 217);
+    border-radius: 15px;
+    /* padding: 10px; */
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin: 20px 0px;
+}
+.table-heading{
+    border-radius: 15px 15px 0px 0px;
+    background-color: var(--primary-color);
+    color: white;
+}
+.lst-header{
+    padding: 0px 10px ;
+}
+.lst-item{
+    padding: 10px;
+    border-bottom: 1px solid rgb(170, 170, 170);
+}
+.commission-price-box{
+    border: 1px solid rgb(217, 217, 217);
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin: 20px 0px;
+}

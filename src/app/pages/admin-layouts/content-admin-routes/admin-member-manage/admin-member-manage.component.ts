@@ -10,7 +10,9 @@ import { AuthServices } from 'src/services/authentication-service';
 })
 export class AdminMemberManageComponent implements OnInit{
 
-  lstUser : any;
+  lstUsers : any;
+  lstUsersFill : any;
+  searchTerm: string = '';
   constructor(private router: Router,private adminServices : AdminServices,private authServices: AuthServices,){}
   ngOnInit(): void {
     //check role user login
@@ -26,7 +28,17 @@ export class AdminMemberManageComponent implements OnInit{
 
     
     this.adminServices.getListUsers().subscribe((res) => {
-      this.lstUser = res;
+      this.lstUsers = res;
+      this.lstUsersFill = this.lstUsers
     }, (error) => {console.log(error.message)})
+  }
+
+  onInputChange(event: any) {
+    if (event && event.target) {
+      // this.searchTerm = event.target.value;
+          this.lstUsersFill = this.lstUsers.filter((user : any )=> user?.name.toLowerCase().includes(event.target.value.toLowerCase()));
+
+    }
+    
   }
 }

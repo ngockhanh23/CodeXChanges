@@ -15,4 +15,7 @@ export class DownloadDialogComponent {
   onNoClick(): void {
     this.dialogRef.close();
   }
+  openDownloadLink(){
+    window.open(this.data.download_Link, '_blank');
+  }
 }

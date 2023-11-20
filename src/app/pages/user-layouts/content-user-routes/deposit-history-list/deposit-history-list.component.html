@@ -1,0 +1,36 @@
+<div class="container user-content">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+            <li class="breadcrumb-item"><a href="#">Lịch sử nạp tiền</a></li>
+        </ol>
+    </nav>
+
+
+    <div class="lst-prod" *ngIf="lstDepositHistory.length >0; else emptyLstDepositHistory">
+        <div class="row lst-prod-head" style="justify-content: center;">
+            <div class="col-lg-3 row" style="align-items: center;  justify-content: center;">
+
+                <div class="col-lg-12">Mã giao dịch</div>
+            </div>
+            <div class="col-lg-9 row" style="align-items: center; justify-content: center;">
+                <div class="col-lg-3">Thời gian</div>
+                <div class="col-lg-4">Hình thức thanh toán</div>
+                <div class="col-lg-2">Số xu</div>
+                <div class="col-lg-3">Trạng thái</div>
+
+            </div>
+        </div>
+
+        <!-- <app-revenue-item *ngFor="let item of lstRevenue.slice().reverse()" [revenueItem]="item"></app-revenue-item> -->
+        <app-deposit-history-item *ngFor="let item of lstDepositHistory.slice().reverse()" [depositHistoryItem]="item"></app-deposit-history-item>
+
+    </div>
+
+    <ng-template #emptyLstDepositHistory>
+        <div>
+            <h3>Không tìm thấy dữ liệu</h3>
+        </div>
+    </ng-template>
+
+</div>

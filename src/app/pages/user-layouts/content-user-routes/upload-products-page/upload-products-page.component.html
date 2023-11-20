@@ -1,32 +1,34 @@
 <div class="container user-content">
 
     <div *ngIf="uploading" class="spinner-container">
-        <h4 style="text-align: center;">Source code đang được tải lên, vui lòng không load lại trang và không ngắt kết nối internet</h4> <br>
+        <h4 style="text-align: center;">Source code đang được tải lên, vui lòng không load lại trang và không ngắt kết
+            nối internet</h4> <br>
         <div class="spinner"></div>
     </div>
 
     <div #successModal class="modal">
         <div class="modal-content">
-          <!-- <span class="close" (click)="closeModal()">&times;</span> -->
-          <h2 style="margin-bottom: 0;">Tải lên thành công !</h2>
-          <div class="img-complete-cover">
-          <img src="assets/img/confirm.png" alt=""  class="complete-img">
+            <!-- <span class="close" (click)="closeModal()">&times;</span> -->
+            <h2 style="margin-bottom: 0;">Tải lên thành công !</h2>
+            <div class="img-complete-cover">
+                <img src="assets/img/confirm.png" alt="" class="complete-img">
 
-          </div>
-          <h6>Cám ơn bạn đã upload sản phẩm của mình và chia sẽ cho mọi người, hãy kiên nhẫn và đợi đội ngũ phê duyệt của chúng tôi nhé !</h6>
-          <div class="option-modal-upload">
-            <button class="btn btn-success" (click)="closeModal()">Tiếp tục đăng tải</button>
-            <span class="space-button"></span>
-            <button class="btn btn-info btn-modal-option" (click)="getProductsUploaded()"  >Danh sách upload</button>
+            </div>
+            <h6>Cám ơn bạn đã upload sản phẩm của mình và chia sẽ cho mọi người, hãy kiên nhẫn và đợi đội ngũ phê duyệt
+                của chúng tôi nhé !</h6>
+            <div class="option-modal-upload">
+                <button class="btn btn-success" (click)="closeModal()">Tiếp tục đăng tải</button>
+                <span class="space-button"></span>
+                <button class="btn btn-info btn-modal-option" (click)="getProductsUploaded()">Danh sách upload</button>
 
-          </div>
+            </div>
         </div>
 
 
-        
-      </div>
-      
-      
+
+    </div>
+
+
 
 
 
@@ -261,9 +263,10 @@
                                                             formControlName="downloadPrice" #inputField>
                                                         <span style="color: goldenrod; font-size: 20px;">&nbsp; <i
                                                                 class="bi bi-coin"></i></span>
-                                                                <small
-                                                                *ngIf=" submitted && form.controls['downloadPrice'].value < 0"
-                                                                style="color: red; margin-left: 5px;"> Giá download phải lớn hơn 0 </small>
+                                                        <small
+                                                            *ngIf=" submitted && form.controls['downloadPrice'].value < 0"
+                                                            style="color: red; margin-left: 5px;"> Giá download phải lớn
+                                                            hơn 0 </small>
                                                     </div>
                                                     <div class="area-support-commit">
                                                         <input type="checkbox" class="check-box-support-commit"
@@ -311,7 +314,7 @@
                                                     <img [src]="imageUrl" alt="Uploaded Image"
                                                         style="width: 200px; margin-bottom: 5px;">
                                                 </div>
-                                                
+
 
                                             </div>
 

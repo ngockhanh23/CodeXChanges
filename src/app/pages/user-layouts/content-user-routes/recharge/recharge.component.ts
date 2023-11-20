@@ -1,5 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServices } from 'src/services/authentication-service';
 import { PaymentServices } from 'src/services/payment-services';
@@ -12,8 +13,13 @@ import { PaymentServices } from 'src/services/payment-services';
 export class RechargeComponent implements OnInit {
 
   accountUser: any;
+  form: FormGroup;
 
-  constructor(private authServices: AuthServices, private router: Router,private paymentServices: PaymentServices) { }
+  constructor(private authServices: AuthServices, private router: Router, private paymentServices: PaymentServices, private fb: FormBuilder) {
+    this.form = this.fb.group({
+      amount: [0, Validators.required],
+    });
+   }
 
   ngOnInit(): void {
     this.authServices.clearAdminAccountLogged();
@@ -21,27 +27,31 @@ export class RechargeComponent implements OnInit {
       this.router.navigate(['login']);
     }
 
-    
 
-    
+
+
   }
 
-  createPayment(){
-    const transaction = {
-      amount: 300000,
-      language: "vn",
-      bankCode: ""
-    };
-    // console.log(transaction)
+  createPayment() {
+    if (this.form.valid) {
+
+      const transaction = {
+        amount: this.form.value.amount * 1000,
+        language: "vn",
+        bankCode: ""
+      };
+      // console.log(transaction)
 
 
-    this.paymentServices.createPayment(transaction).subscribe((response) => {
-      const redirectUrl = response.redirectUrl;
+      this.paymentServices.createPayment(transaction).subscribe((response) => {
+        const redirectedUrl = response.redirectedUrl;
+        window.location.href = redirectedUrl;
+      }, (error) => {
+        console.error('Lỗi khi gửi yêu cầu POST:', error);
+        // Xử lý lỗi nếu cần.
+      });
 
-        // Chuyển người dùng đến trang thanh toán
-        window.location.href = redirectUrl;
-    });
 
-
+    }
   }
 }

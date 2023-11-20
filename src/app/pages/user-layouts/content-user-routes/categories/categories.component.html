@@ -18,18 +18,18 @@
                             </div>
     
                             <div class="col-lg-9 sort-category-item">
-                                <span>Sắp xếp theo</span>
-                                <button class="btn">Mới nhất</button>
-                                <button class="btn">Tải nhiều nhất</button>
-                                <button class="btn">Xem nhiều nhất</button>
-                                <button class="btn">Miễn phí</button>
+                                <span><i class="bi bi-sort-down"></i></span>
+                                <button class="btn" (click)="sortProductByTime()">Mới nhất</button>
+                                <button class="btn" (click)="sortProductByDownloadCount()">Tải nhiều nhất</button>
+                                <button class="btn" (click)="sortProductByNumberOfView()">Xem nhiều nhất</button>
+                                <!-- <button class="btn">Miễn phí</button> -->
     
     
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <app-product-cards *ngFor="let item of category.codeProducts" [codeProductItem]="item"  class="col-lg-3 card-product-item"></app-product-cards>
+                        <app-product-cards *ngFor="let item of lstProdsByCate" [codeProductItem]="item"  class="col-lg-3 card-product-item"></app-product-cards>
                     </div>
     
                     <!-- <div class="pagination">

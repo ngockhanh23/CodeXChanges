@@ -6,7 +6,7 @@
 
             <div class="recharge">
                 <div class="box box-recharge">
-                    <form (ngSubmit)="createPayment()">
+                    <form [formGroup]="form">
                         <h4>Nạp xu vào tài khoản của bạn</h4>
 
                         <hr>
@@ -49,39 +49,40 @@
 
                                     <div>
                                         <label class="radio-button">
-                                            <input type="radio" name="amount" value="20"> Nạp &nbsp;<span
+                                            <input formControlName="amount" #inputField type="radio" value="20"> Nạp &nbsp;<span
                                                 style="font-weight: bold;">20.000đ</span> <small>(+20 xu vào tài
                                                 khoản)</small>
                                         </label>
                                     </div>
                                     <div>
                                         <label class="radio-button">
-                                            <input type="radio" name="amount" value="50"> Nạp &nbsp;<span
+                                            <input type="radio" formControlName="amount" #inputField value="50"> Nạp &nbsp;<span
                                                 style="font-weight: bold;">50.000đ</span> <small>(+50 xu vào tài
                                                 khoản)</small>
                                         </label>
                                     </div>
                                     <div>
                                         <label class="radio-button">
-                                            <input type="radio" name="amount" value="100"> Nạp &nbsp;<span
+                                            <input type="radio" formControlName="amount" #inputField value="100"> Nạp &nbsp;<span
                                                 style="font-weight: bold;">100.000đ</span> <small>(+100 xu vào
                                                 tài khoản)</small>
                                         </label>
                                     </div>
                                     <div>
                                         <label class="radio-button">
-                                            <input type="radio" name="amount" value="100"> Nạp &nbsp;<span
+                                            <input type="radio" formControlName="amount" #inputField value="200"> Nạp &nbsp;<span
                                                 style="font-weight: bold;">200.000đ</span> <small>(+200 xu vào
                                                 tài khoản)</small>
                                         </label>
                                     </div>
                                     <div>
                                         <label class="radio-button">
-                                            <input type="radio" name="amount" value="100"> Nạp &nbsp;<span
+                                            <input type="radio" formControlName="amount" #inputField value="500"> Nạp &nbsp;<span
                                                 style="font-weight: bold;">500.000đ</span> <small>(+500 xu vào
                                                 tài khoản)</small>
                                         </label>
                                     </div>
+                                    
                                     <!-- <div>
                                 <div class="g-recaptcha" data-sitekey="6LdTizgoAAAAAKvHg_WoN_Dyu16naE1Vn-AapI3v"></div>
                             </div> -->
@@ -97,7 +98,7 @@
                         </div>
 
                         <div class="btn-submit-form">
-                            <button type="submit" class="btn">Xác nhận nạp xu</button>
+                            <button (click)="createPayment() " class="btn">Xác nhận nạp xu</button>
                         </div>
 
                     </form>

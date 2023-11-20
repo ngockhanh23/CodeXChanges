@@ -1,3 +1,27 @@
+<div *ngIf="uploading" class="spinner-container">
+    <div class="spinner"></div>
+</div>
+
+<div #successModal class="modal">
+    <div class="modal-content">
+      <!-- <span class="close" (click)="closeModal()">&times;</span> -->
+      <h2 style="margin-bottom: 0;">Gửi yêu cầu rút tiền thành công !</h2>
+      <div class="img-complete-cover">
+      <img src="assets/img/confirm.png" alt=""  class="complete-img">
+
+      </div>
+      <h6>Bạn có thể xóa yêu cầu rút tiền trước khi chúng tôi xác nhận yêu cầu của bạn</h6>
+      <div class="option-modal-upload">
+        <button class="btn btn-success" (click)="closeModal()">OK</button>
+        <span class="space-button"></span>
+        <!-- <button class="btn btn-info btn-modal-option" (click)="getProductsUploaded()"  >Danh sách upload</button> -->
+
+      </div>
+    </div>
+
+
+    
+  </div>
 
 <div class="container user-content">
     <nav aria-label="breadcrumb">
@@ -5,43 +29,6 @@
             <li class="breadcrumb-item"><h4>Rút tiền</h4></li>            
         </ol>
     </nav>
-
-    <form action="#"  class="form-withdrawal">
-
-        <div class="withdrawal-form-control">
-            <div class="row withdrawal-item">
-                <div class="col-lg-6" style="width: 50%; text-align: end;" ><span>Số xu hiện có:</span></div>
-                <div class="col-lg-6"> <span class="coin-balance">105</span> xu</div>
-            </div>
-            
-        </div>
-        <div class="withdrawal-form-control">
-            <div class="row withdrawal-item">
-                <div class="col-lg-6" style="width: 50%; text-align: end;" ><span>Thông tin tài khoản rút tiền: <br> <small>(Tên ngân hàng - Số tk)</small></span></div>
-                <div class="col-lg-6">
-                    <textarea class="form-control" style="height: 100%;" placeholder="Thông tin tài khoản"></textarea>
-                </div>
-            </div>
-            
-        </div>
-        <div class="withdrawal-form-control">
-            <div class="row withdrawal-item">
-                <div class="col-lg-6" style="width: 50%; text-align: end;" ><span>Số tiền muốn rút</span></div>
-                <div class="col-lg-6">
-                    <input type="number" name="" id="" class="form-control" min="0"> <br>
-                    <span>=> Số tiền nhận được : 0đ</span>
-                    
-                </div>
-            </div>
-            
-        </div>
-        <div class="withdrawal-form-control">
-            <button class="btn btn-primary-design" type="submit"><i class="bi bi-cash-coin"></i> Gửi yêu cầu rút tiền</button>
-            
-        </div>
-
-    </form>
-    <hr>
     <div class="pro-note">
         <div class="note">
             <strong>Ghi chú</strong>
@@ -56,17 +43,85 @@
         </div>
     </div>
 
-    <div class="des-detail-area" style="margin-top: 80px;">
-        <div class="title-description"><span>Lịch sử rút tiền</span></div>
+    <form [formGroup]="form"  class="form-withdrawal">
 
-        <div class="prod-details-description">
-            <p>
-                <!-- {{codeProd.install_Instruction}} -->
-            </p>
+        <div class="withdrawal-form-control">
+            <div class="row withdrawal-item">
+                <div class="col-lg-6" style="width: 50%; text-align: end;" ><span>Số xu hiện có:</span></div>
+                <div class="col-lg-6"> <span class="coin-balance">{{userLogin.coin_Balance}}</span> xu</div>
+            </div>
+            
         </div>
+        <div class="withdrawal-form-control">
+            <div class="row withdrawal-item">
+                <div class="col-lg-6" style="width: 50%; text-align: end;" ><span>Thông tin tài khoản rút tiền: <br> <small>(Tên ngân hàng - Số tk)</small></span></div>
+                <div class="col-lg-6">
+                    <textarea formControlName="bankAccount" class="form-control" rows="4" placeholder="Thông tin tài khoản ngân hàng nhận tiền"></textarea>
+                    <p *ngIf=" submited &&  form.controls['bankAccount'].hasError('required')"
+                                        style="color: red; margin-left: 5px;">Bạn phải điền thông tin tài khoản ngân hàng nhận tiền</p>
+                </div>
+            </div>
+            
+        </div>
+        <div class="withdrawal-form-control">
+            <div class="row withdrawal-item">
+                <div class="col-lg-6" style="width: 50%; text-align: end;" ><span>Số xu muốn rút</span></div>
+                <div class="col-lg-6">
+                    <!-- <input class="form-control"  type="number" [(ngModel)]="amountCoins" name="amountCoins" [value]="amountCoins" > <br> -->
+                    <input class="form-control" formControlName="amountCoins" (input)="onAmountCoinsChange($event)"  type="number"  min="0"> <br>
+
+                    <p *ngIf=" submited &&  form.get('amountCoins')!.value < 200" style="color: red;">Số xu muốn rút phải lớn hơn 200</p> 
+                    <p *ngIf=" submited &&  form.get('amountCoins')!.value > userLogin.coin_Balance" style="color: red;">Số xu muốn rút lớn hơn số xu hiện có</p> 
+
+                    <p>=> Số tiền nhận được :  {{ form.get('amountCoins')!.value *1000 |  currency:'VND':'' }} ₫</p>                   
+                </div>
+            </div>
+            
+        </div>
+        <div class="withdrawal-form-control">
+            <button class="btn btn-primary-design" (click)="submitFormWithdrawal()"><i class="bi bi-cash-coin"></i> Gửi yêu cầu rút tiền</button>
+            
+        </div>
+
+    </form>
+    <hr>
+    
+
+        <h3>Danh sách rút tiền</h3>
+        <!-- <hr> -->
+
+        <div class="lst-prod" *ngIf="lstWithDrawalRequest.length >0; else emtyLststWithDrawalRequest">
+            <div class="row lst-prod-head" style="justify-content: center;">
+                <div class="col-lg-8 row" style="align-items: center;  justify-content: center;">
+                    <!-- <div class="col-lg-3">Mã</div> -->
+                    <div class="col-lg-4">Thời gian</div>
+                    <div class="col-lg-8">Tài khoản nhận tiền</div>
+
+                </div>
+                <div class="col-lg-4 row" style="align-items: center; justify-content: center;">
+                    <div class="col-lg-5">Số tiền</div>
+                    <div class="col-lg-5">Trạng thái</div>
+                    
+                    <div class="col-lg-2"><i class="bi bi-gear"></i></div>
+
+                </div>
+            </div>
+
+            <!-- <app-revenue-item *ngFor="let item of lstRevenue.slice().reverse()" [revenueItem]="item"></app-revenue-item> -->
+            <app-withdrawal-request-item *ngFor="let item of lstWithDrawalRequest.slice().reverse()" [withdrawalItem]="item"></app-withdrawal-request-item>
+
+            
+
+        </div>
+        <ng-template #emtyLststWithDrawalRequest>
+            <div>
+                <h3>Không tìm thấy dữ liệu</h3>
+            </div>
+        </ng-template>
+        
     </div>
 
-</div>
+<!-- </div> -->
 
 
 

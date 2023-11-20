@@ -1,0 +1,243 @@
+<div id="layoutSidenav_content">
+
+    <main>
+        <div class="container-fluid px-4">
+            <h3><i class="bi bi-bar-chart-line"></i> Thống kê doanh thu</h3>
+            <hr>
+            <div class="revenue-box">
+                <div class="row">
+                    <div class="col-lg-6 row align-items-end">
+                        <div class="col-lg-4">
+                            <span>Từ ngày</span>
+                            <input [(ngModel)]="dateStart" type="date" class="form-control" placeholder="Ngày bắt đầu">
+                        </div>
+                        <div class="col-lg-4">
+                            <span>Đến ngày</span>
+                            <input [(ngModel)]="dateEnd" type="date" class="form-control" placeholder="Ngày kết thúc">
+                        </div>
+                        <div class="col-lg-4">
+                            <button class="btn btn-info" style="width: 100%;" (click)="filterByDate()"><i
+                                    class="bi bi-graph-up"></i> Thống kê</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 row align-items-end justify-content-end">
+                        <button class="btn btn-outline-info" (click)="filterByCurrentDate()"><i
+                                class="bi bi-calendar-week"></i> Hôm nay</button>
+                        <span style="margin: 0px 10px;"></span>
+                        <button class="btn btn-outline-info" (click)="getAllTransactions()"><i class="bi bi-list"></i>
+                            Tất cả</button>
+
+                    </div>
+                </div>
+            </div><br>
+        </div>
+
+        <hr>
+
+        <div>
+            <div class=" row">
+                <div class="col-lg-6" (click)="selectTab(1)"
+                    [ngClass]="{'tab-selected': selectedTab === 1, 'tab-normal': selectedTab !== 1}">
+                    <a class="nav-link">
+                        <h6>Doanh thu theo tiền hoa hồng</h6>
+                    </a>
+                </div>
+                <div class=" col-lg-6" (click)="selectTab(2)"
+                    [ngClass]="{'tab-selected': selectedTab === 2, 'tab-normal': selectedTab !== 2}">
+                    <a class="nav-link">
+                        <h6>Doanh thu theo lịch sử nạp rút</h6>
+                    </a>
+                </div>
+            </div>
+
+            <div *ngIf="selectedTab === 1" class="tab-content">
+
+
+                <div class="row">
+                    <div class="col-lg-5">
+
+                        <div class="row">
+                            <div class="col-lg-7"><h5><i class="bi bi-cash"></i> Tổng tiền giao dịch:</h5> </div>
+                            <div class="col-lg-5    "> <h5>{{totalPrice}} xu <span style="color: var(--primary-color);">({{totalPrice*1000 |  currency:'VND':''}} ₫)</span></h5></div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-7"><h5><i class="bi bi-cash"></i> Số tiền ngời dùng nhận:</h5> </div>
+                            <div class="col-lg-5    "> <h5>{{totalNetRevenue}} xu <span style="color: var(--primary-color);">({{totalNetRevenue*1000 |  currency:'VND':''}} ₫)</span></h5></div>
+                        </div>
+                        <hr>
+                        <div class="row commission-price-box">
+                            <div class="col-lg-7"><h3><i class="bi bi-cash-coin"></i> Doanh thu hoa hồng:</h3> </div>
+                            <div class="col-lg-5 "> <h3><span style="color: var(--primary-color);">{{totalPrice*1000 - totalNetRevenue*1000 |  currency:'VND':''}} ₫</span></h3></div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-6"></div>
+
+                </div>
+
+
+                <hr>
+                <div class="table-data">
+                    <div class="row ">
+                        <div class="col-lg-12">
+                            <div class="lst-cover">
+                                <div class=" table-heading">
+                                    <div class="row lst-header">
+                                        <div class="col-lg-5 row">
+                                            <div class="col-lg-6">
+                                                <div class="d-flex align-items-center">
+                                                    <h5>Người bán</h5>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="d-flex align-items-center">
+                                                    <h5>Người mua</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 d-flex align-items-center">
+                                            <h5>Source code</h5>
+                                        </div>
+                                        <div class="col-lg-1 d-flex align-items-center">
+                                            <h5>Giá</h5>
+                                        </div>
+                                        <div class="col-lg-1 d-flex align-items-center">
+                                            <h5>Thực nhận</h5>
+                                        </div>
+                                        <div class="col-lg-2 d-flex align-items-center">
+                                            <h5>Ngày giao dịch</h5>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <hr>
+
+                                <!-- item -->
+                                <div class="lst-item" *ngFor="let item of lstTransactionMember.slice().reverse()">
+                                    <div class="row ">
+                                        <div class="col-lg-5 row">
+                                            <div class="col-lg-6">
+                                                <div class="d-flex align-items-center">
+                                                    <img [src]="item.seller.avatar_Url" alt=""
+                                                        style="width: 80px; height: 80px; margin-right: 10px; border-radius: 50%;" />
+                                                    <div class="ms-3">
+                                                        <h6 class="">{{item.seller.name}}</h6>
+                                                        <p class="text-muted mb-0">({{item.seller.email}})</p>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="d-flex align-items-center">
+                                                    <img [src]="item.buyer.avatar_Url" alt=""
+                                                        style="width: 80px; height: 80px; margin-right: 10px; border-radius: 50%;" />
+                                                    <div class="ms-3">
+                                                        <h6 class="">{{item.buyer.name}}</h6>
+                                                        <p class="text-muted mb-0">({{item.buyer.email}})</p>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 d-flex align-items-center">
+                                            <h6>{{item.code_Product.code_Title}}</h6>
+                                        </div>
+                                        <div class="col-lg-1 d-flex align-items-center">{{item.price}} xu</div>
+                                        <div class="col-lg-1 d-flex align-items-center">{{item.net_Revenue}} xu</div>
+                                        <div class="col-lg-2 d-flex align-items-center">{{item.trading_Date | date:
+                                            'dd/MM/yyyy HH:mm:ss'}}</div>
+
+
+                                    </div>
+
+
+                                </div>
+                                <!-- end-item -->
+
+
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="selectedTab === 2" class="tab-content">
+                <h2>Thời gian có hạn nên tạm thời phần này chưa làm kịp</h2>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+        <!-- <div class="lst-cover">
+            <div class="lst-header" >
+                <div class="row ">
+                    <div class="col-lg-4">
+                        <div class="col-lg-12">
+                            <div class="d-flex align-items-center">
+                                <h6>Thành viên</h6>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="col-lg-2 d-flex align-items-center">Mã giao dịch</div>
+                    <div class="col-lg-2 d-flex align-items-center">Ngày giao dịch</div>
+                    <div class="col-lg-2 d-flex align-items-center">Hình thức thanh toán</div>
+                    <div class="col-lg-1 d-flex align-items-center">Số xu</div>
+                    <div class="col-lg-1 d-flex align-items-center">trạng thái</div>               
+    
+                </div>
+    
+            </div>
+    
+      
+            <div   class="lst-item" >
+                <div class="row ">
+                    <div class="col-lg-4">
+                        <div class="col-lg-12">
+                            <div class="d-flex align-items-center">
+                                <img src="https://scontent.fsgn8-4.fna.fbcdn.net/v/t39.30808-6/367442403_122106637814008645_8742196988977267306_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=5f2048&_nc_ohc=VbqxQcz176UAX8rjOoj&_nc_ht=scontent.fsgn8-4.fna&oh=00_AfAFNe30dyMg09Ng3zT-Y-KW2gT6yEXaM-Rj30rLyZGeDQ&oe=65438890"
+                                    alt=""
+                                    style="width: 80px; height: 80px; margin-right: 10px; border-radius: 50%;" />
+                                <div class="ms-3">
+                                    <h6 class="">wwww</h6>
+                                    <p class="text-muted mb-0">dsfsdf</p>
+    
+                                </div>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="col-lg-2 d-flex align-items-center">ssasa</div>
+                    <div class="col-lg-2 d-flex align-items-center">ssasa</div>
+                    <div class="col-lg-2 d-flex align-items-center">ssasa</div>
+                    <div class="col-lg-1 d-flex align-items-center">ssasa</div>
+                    <div class="col-lg-1 d-flex align-items-center">ssasa</div>               
+    
+                </div>
+            <hr>
+                
+            </div>
+           
+
+            
+
+        </div> -->
+
+
+    </main>
+</div>

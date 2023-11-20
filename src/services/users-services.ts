@@ -50,6 +50,12 @@ export class UserServices {
     return this.http.put('http://localhost:3000/code-products/update-number-of-download/' + data._id, data);
   }
 
+  // withdrawal feature
+  createWithdawalRequest(withdrawalRequest : any): Observable <any>{
+    return this.http.post('http://localhost:3000/withdrawals/send-request', withdrawalRequest);
+
+  }
+
   //comment
   postComment(data : any) : Observable <any>{
     return this.http.post('http://localhost:3000/comments', data);

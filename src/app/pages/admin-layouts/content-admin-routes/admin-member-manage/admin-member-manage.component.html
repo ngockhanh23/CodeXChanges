@@ -10,12 +10,13 @@
                     <div class="col-lg-6 row align-items-end">
                         <div class="col-lg-8">
                             <span>Tìm kiếm</span>
-                            <input type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm">
+                            <!-- <input [(ngModel)]="searchTerm" (input)="onInputChange($event.target.value)" type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm"> -->
+                            <input [(ngModel)]="searchTerm" (input)="onInputChange($event)" type="text" class="form-control" placeholder="Nhập từ khóa tìm kiếm">
                         </div>
                         
-                        <div class="col-lg-4">
+                        <!-- <div class="col-lg-4">
                             <button class="btn btn-info" style="width: 100%;"><i class="bi bi-search"></i> Tìm kiếm</button>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col-lg-6">
 
@@ -50,7 +51,7 @@
                         </div>
 
                         <!-- item -->
-                        <a [routerLink]="['/detail-member-infor', item._id]" class="table-item-link" *ngFor="let item of lstUser.slice().reverse()">
+                        <a [routerLink]="['/detail-member-infor', item._id]" class="table-item-link" *ngFor="let item of lstUsersFill.slice().reverse()">
 
                             <div class="row table-row table-row-item" style="align-items: center;">
                                 <div class="col-lg-4">

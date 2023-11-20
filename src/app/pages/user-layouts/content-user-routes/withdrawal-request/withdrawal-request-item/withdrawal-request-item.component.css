@@ -1,0 +1,10 @@
+.lst-withdrawal-item{
+    margin: 15px 0px;
+}
+.btn-delete{
+    border: none;
+    cursor: pointer;
+    background: none;
+    color: darkred;
+    font-size: 20px;
+}

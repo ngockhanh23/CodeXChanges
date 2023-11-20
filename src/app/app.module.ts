@@ -32,7 +32,6 @@ import { AdminDashboardComponent } from './pages/admin-layouts/admin-dashboard/a
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RechargeComponent } from './pages/user-layouts/content-user-routes/recharge/recharge.component';
-// import {MatDialogModule} from '@angular/mat'
 import { MatDialogModule } from '@angular/material/dialog';
 import { DownloadDialogComponent } from './pages/user-layouts/content-user-routes/product-details/download-dialog/download-dialog.component';
 import { BoughtProductListComponent } from './pages/user-layouts/content-user-routes/bought-products-list/bought-product-list.component';
@@ -48,6 +47,21 @@ import { DetailMemberInforComponent } from './pages/admin-layouts/content-admin-
 import { WithdrawalRequestComponent } from './pages/user-layouts/content-user-routes/withdrawal-request/withdrawal-request.component';
 import { AdminNotificationComponent } from './pages/admin-layouts/content-admin-routes/admin-notification/admin-notification.component';
 import { PaymentServices } from 'src/services/payment-services';
+import { SuccessfulPaymentPageComponent } from './pages/user-layouts/content-user-routes/recharge/successful-payment-page/successful-payment-page.component';
+import { DepositHistoryListComponent } from './pages/user-layouts/content-user-routes/deposit-history-list/deposit-history-list.component';
+import { DepositHistoryItemComponent } from './pages/user-layouts/content-user-routes/deposit-history-list/deposit-history-item/deposit-history-item.component';
+import { AdminDepositListComponent } from './pages/admin-layouts/content-admin-routes/admin-deposit-list/admin-deposit-list.component';
+import { AdminRevenueStatisticsComponent } from './pages/admin-layouts/content-admin-routes/admin-revenue-statistics/admin-revenue-statistics.component';
+import { AdminWithdrawalRequestsComponent } from './pages/admin-layouts/content-admin-routes/admin-withdrawal-requests/admin-withdrawal-requests.component';
+import { WithdrawalRequestItemComponent } from './pages/user-layouts/content-user-routes/withdrawal-request/withdrawal-request-item/withdrawal-request-item.component';
+import { AdminWithdrawalDetailsComponent } from './pages/admin-layouts/content-admin-routes/admin-withdrawal-requests/admin-withdrawal-details/admin-withdrawal-details.component';
+import { SearchResultsComponent } from './pages/user-layouts/content-user-routes/search-results/search-results.component';
+import { AdminNotificationItemComponent } from './pages/admin-layouts/content-admin-routes/admin-notification/admin-notification-item/admin-notification-item.component';
+import { RecaptchaDialogComponent } from './pages/user-layouts/content-user-routes/product-details/recaptcha-dialog/recaptcha-dialog.component';
+// import { RecaptchaModule } from "ng-recaptcha";
+// import { NgxCaptchaModule } from "ngx-captcha";
+
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 
 const lstRoutes: Routes = [
@@ -70,6 +84,21 @@ const lstRoutes: Routes = [
 
   { path: 'detail-member-infor/:id', component: DetailMemberInforComponent},
   { path: 'withdrawal', component: WithdrawalRequestComponent},
+  { path: 'successful-payment-page', component: SuccessfulPaymentPageComponent},
+  { path: 'deposit-history-list', component: DepositHistoryListComponent},
+  { path: 'admin-deposit-list', component: AdminDepositListComponent},
+  { path: 'admin-revenue-statistics', component: AdminRevenueStatisticsComponent},
+  { path: 'admin-withdrawal-requests', component: AdminWithdrawalRequestsComponent},
+  { path: 'admin-withdrawal-details/:id', component: AdminWithdrawalDetailsComponent},
+  { path: 'search-results/:search-key', component: SearchResultsComponent},
+  
+
+
+
+
+
+
+
 
 
 
@@ -110,14 +139,24 @@ const lstRoutes: Routes = [
     DetailMemberInforComponent,
     WithdrawalRequestComponent,
     AdminNotificationComponent,
+    SuccessfulPaymentPageComponent,
+    DepositHistoryListComponent,
+    DepositHistoryItemComponent,
+    AdminDepositListComponent,
+    AdminRevenueStatisticsComponent,
+    AdminWithdrawalRequestsComponent,
+    WithdrawalRequestItemComponent,
+    AdminWithdrawalDetailsComponent,
+    SearchResultsComponent,
+    AdminNotificationItemComponent,
+    RecaptchaDialogComponent,
 
     
   ],
   imports: [
-    FormsModule,
     BrowserModule,
-    FormsModule,
     ReactiveFormsModule,
+    FormsModule,
     CurrencyPipe,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -125,9 +164,8 @@ const lstRoutes: Routes = [
     ToastrModule.forRoot(),
     MatDialogModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireStorageModule
-    
-    
+    AngularFireStorageModule,
+    NgxCaptchaModule
   ],
   exports: [RouterModule],
   providers: [DatePipe,UserServices, AdminServices, PaymentServices],

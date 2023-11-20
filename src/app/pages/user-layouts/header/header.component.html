@@ -21,9 +21,9 @@
                     </a>
                 </div>
                 <div class="col-lg-4">
-                    <form action="#" class="search-form">
-                        <input type="text" class="form-control search-box" placeholder="Tìm kiếm source code">
-                        <button class="btn search-button"><i class="bi bi-search"></i></button>
+                    <form (ngSubmit)="GetProductBySearchKey(f)" #f="ngForm" class="search-form">
+                        <input type="text" ngModel name="search_Key" class="form-control search-box" placeholder="Tìm kiếm source code">
+                        <button class="btn search-button" type="submit"><i class="bi bi-search"></i></button>
                     </form>
                 </div>
 
@@ -65,8 +65,8 @@
                                 </div>
                             </a>
                             <div class="dropdown-menu user-button" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item user-item" href="#"><i class="bi bi-person-fill"></i>
-                                    Thông tin tài khoản</a>
+                                <!-- <a class="dropdown-item user-item" href="#"><i class="bi bi-person-fill"></i>
+                                    Thông tin tài khoản</a> -->
                                     <a class="dropdown-item user-item" [routerLink]="['/notification']"><i class="bi bi-bell"></i>
                                         Thông báo
                                          <span class="count-notification" *ngIf="countUnreadNoti > 0">{{countUnreadNoti}}</span>
@@ -76,12 +76,12 @@
                                     <!-- <span class="count-notification">2</span> -->
                                 </a>
                                 
-                                <a class="dropdown-item user-item" href="#"><i class="bi bi-bookmark"></i>Code đã lưu</a>
+                                <!-- <a class="dropdown-item user-item" href="#"><i class="bi bi-bookmark"></i>Code đã lưu</a> -->
                                 <a class="dropdown-item user-item" [routerLink]="['/get-users-bought-product-list']"><i class="bi bi-download"></i>Code đã mua</a>
                                 <a class="dropdown-item user-item" [routerLink]="['/revenues']"><i class="bi bi-bar-chart"></i>Doanh thu bán code</a>
                                 
-                                <a class="dropdown-item user-item" href="#"><i class="bi bi-hourglass"></i>Lịch sử nạp tiền</a>
-                                <a class="dropdown-item user-item" href="#"><i class="bi bi-coin"></i>Nạp tiền</a>
+                                <a class="dropdown-item user-item" [routerLink]="['/deposit-history-list']"><i class="bi bi-hourglass"></i>Lịch sử nạp tiền</a>
+                                <a class="dropdown-item user-item" [routerLink]="['/recharge']"><i class="bi bi-coin"></i>Nạp tiền</a>
 
                                 <a class="dropdown-item user-item" [routerLink]="['/withdrawal']"><i class="bi bi-cash"></i>Rút tiền -
                                     {{userLogin.coin_Balance}} xu</a>

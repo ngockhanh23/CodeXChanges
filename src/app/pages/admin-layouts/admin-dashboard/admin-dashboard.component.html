@@ -47,10 +47,10 @@
                             <i class="bi bi-code-slash"></i>
                             Quản lý source code
                         </a>
-                        <a class="nav-link" href="">
+                        <!-- <a class="nav-link" href="">
                             <i class="bi bi-braces"></i>
                             Quản lý danh mục
-                        </a>
+                        </a> -->
 
                         <div class="sb-sidenav-menu-heading">Người dùng</div>
                         <a class="nav-link" [routerLink]="['/admin-member-manage']">
@@ -59,17 +59,17 @@
                         </a>
 
                         <div class="sb-sidenav-menu-heading">Thống kê</div>
-                        <a class="nav-link" href="">
-                            <i class="bi bi-person-lines-fill"></i>
+                        <a class="nav-link" [routerLink]="['/admin-revenue-statistics']">
+                            <i class="bi bi-bar-chart-line"></i>
                             Thống kê doanh thu
                         </a>
 
                         <div class="sb-sidenav-menu-heading">Giao dịch</div>
-                        <a class="nav-link" href="">
+                        <a class="nav-link" [routerLink]="['/admin-deposit-list']">
                             <i class="bi bi-cash-coin"></i>
                             Danh sách nạp tiền
                         </a>
-                        <a class="nav-link" href="">
+                        <a class="nav-link" [routerLink]="['/admin-withdrawal-requests']">
                             <i class="bi bi-cash-coin"></i>
                             Yêu cầu rút tiền
                         </a>

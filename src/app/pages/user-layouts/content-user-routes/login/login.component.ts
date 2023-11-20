@@ -16,9 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(private authServices : AuthServices,private router: Router, private toastr: ToastrService){};
   ngOnInit(): void {
     this.authServices.clearAdminAccountLogged();
-    
   }
-
+  
   onLogin(form: NgForm){
     const acount = {
       email: form.value.email,

@@ -1,0 +1,47 @@
+<div id="layoutSidenav_content">
+
+    <main>
+        <div class="container-fluid px-4">
+            <div class="d-flex justify-content-between">
+                <h3><i class="bi bi-cash-coin"></i> Yêu cầu rút tiền</h3>
+                <button (click)="vnPayNavigate()" class="btn btn-save">Chuyển đến VnPay <i class="bi bi-cash-coin"></i></button>
+            </div>
+            <hr>
+
+      
+                <div class="container-box">
+                    <div class="box">
+                        <div class="user-information">
+                            <div class="infor-user">
+                                <h4 style="color: gray;"> Chi tiết yêu cầu rút tiền </h4>
+                                <img [src]="withdrawalItem.id_User.avatar_Url" alt="">
+                                <h4>{{withdrawalItem.id_User.name}}</h4>
+                                <h6>({{withdrawalItem.id_User.email}})</h6> <br>
+                                <h6>Số tiền muốn rút : <span class="price-bold">{{withdrawalItem.amount_Coins*1000 |
+                                        currency:'VND':''}} ₫</span></h6> <br>
+                                <div style="width: 100%; text-align: start;">
+                                    <h6 style="color: gray;">Ngân hàng nhận tiền : </h6>
+                                    <textarea style="width: 100%; padding: 5px;" rows="3"
+                                        disabled>{{withdrawalItem.bank_Account}}</textarea> <br>
+                                    <h6>Trạng thái : <span style="font-size: 15px;" class="badge"
+                                            [ngClass]="{'badge-success' : withdrawalItem.status === 'Đã gửi', 'badge-warning' : withdrawalItem.status === 'Đang chờ' }">{{withdrawalItem.status}}</span></h6>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="bg-light" style="padding: 10px 0px;">
+                                <!-- <h4>Source code đã mua</h4> -->
+                                <select [value]="withdrawalItem.status" [(ngModel)]="statusWithdrawal" class="form-control">
+                                    <option value="Đang chờ">Đang chờ</option>
+                                    <option value="Đã gửi">Đã gửi</option>
+                                </select>
+                                <button class="btn btn-save" (click)="onChangeWithDrawalStatus()">Lưu trạng thái</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+        </div>
+    </main>
+</div>

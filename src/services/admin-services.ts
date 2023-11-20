@@ -38,6 +38,26 @@ export class AdminServices {
   getAdminAccountById(id: String): Observable<any> {
     return this.http.get('http://localhost:3000/users/getAdminAcountById/' + id);
   }
+
+  //revenue feature
+  getAllRechargeList() : Observable<any> {
+    return this.http.get('http://localhost:3000/recharges/getAllRechargeList');
+  }
  
+  // withdrawal feature
+  getListWithdrawalRequest(): Observable<any> {
+    return this.http.get('http://localhost:3000/withdrawals/get-lst-withdrawal-request');
+  }
+  getWithdrawalById(id: String): Observable<any> {
+    return this.http.get('http://localhost:3000/withdrawals/get-withdrawal-by-id/' + id);
+  }
+  changeWithdrawalRequest(withdrawal : any): Observable<any> {
+    return this.http.put('http://localhost:3000/withdrawals/change-withdrawal-request', withdrawal);
+  }
+
+  //get transaction
+  getAllTransactions(): Observable<any> {
+    return this.http.get('http://localhost:3000/transactions/get-all-transactions');
+  }
 
 }

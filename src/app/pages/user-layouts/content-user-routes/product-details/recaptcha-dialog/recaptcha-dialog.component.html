@@ -1,0 +1,30 @@
+<div class="download-dialog">
+
+   
+    <div class="download-dialog-body">
+        <div>
+            <h5>Hãy xác thực rằng bạn ko phải là robot</h5>
+            <div style="display: flex;justify-content: center; padding: 20px 5px;">
+                <form [formGroup]="aFormGroup">
+                    <ngx-recaptcha2 #captchaElem
+                    [siteKey]="siteKey"
+                    (reset)="handleReset()"
+                    (expire)="handleExpire()"
+                    (load)="handleLoad()"
+                    (success)="handleSuccess($event)"
+                    [useGlobalDomain]="false"
+                    formControlName="recaptcha">
+                  </ngx-recaptcha2>
+                  </form>
+                
+            </div>
+       
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="onNoClick()">Hủy</button>
+    
+    </div>
+    
+
+</div>

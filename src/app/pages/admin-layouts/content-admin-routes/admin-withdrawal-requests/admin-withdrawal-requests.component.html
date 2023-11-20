@@ -1,0 +1,105 @@
+<div id="layoutSidenav_content">
+
+    <main>
+        <div class="container-fluid px-4">
+            <h3><i class="bi bi-cash-coin"></i> Danh sách yêu cầu rút tiền</h3>
+            <hr>
+            <div class="revenue-box">
+                <div class="row">
+                    <div class="col-lg-6 row align-items-end">
+                        <div class="col-lg-4">
+                            <span>Từ ngày</span>
+                            <input [(ngModel)]="dateStart" type="date" class="form-control" placeholder="Ngày bắt đầu">
+                        </div>
+                        <div class="col-lg-4">
+                            <span>Đến ngày</span>
+                            <input [(ngModel)]="dateEnd" type="date" class="form-control" placeholder="Ngày kết thúc">
+                        </div>
+                        <div class="col-lg-4">
+                            <button class="btn btn-info" style="width: 100%;" (click)="filterByDate()"><i class="bi bi-graph-up"></i> Thống kê</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 row align-items-end justify-content-end" >
+                        <button class="btn btn-outline-info" (click)="filterByCurrentDate()" ><i class="bi bi-calendar-week"></i> Hôm nay</button>
+                        <span style="margin: 0px 10px;"></span>
+                        <button class="btn btn-outline-info" (click)="getAllWithdrawalRequest()"><i class="bi bi-list"></i> Tất cả</button>
+
+                    </div>
+                </div>
+            </div><br>
+        </div>
+
+        <hr>
+
+
+       
+     
+       <div style="display: flex; justify-content: center;" *ngIf="lstWithdrawalRequests.length > 0; else emtyData">
+        <div class="lst-cover">
+            <div class="lst-header" >
+                <div class="row ">
+                    <div class="col-lg-4">
+                        <div class="col-lg-12">
+                            <div class="d-flex align-items-center">
+                                <h6>Thành viên</h6>
+                            </div>
+    
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-2 d-flex align-items-center">Thời gian</div>
+                    <div class="col-lg-3 d-flex align-items-center">Tài khoản chuyển tiền</div>
+                    <div class="col-lg-2 d-flex align-items-center">Số tiền</div>
+                    <div class="col-lg-1 d-flex align-items-center">trạng thái</div>               
+    
+                </div>
+    
+            </div>
+    
+            <!-- noti-item -->
+            <div   class="lst-item" *ngFor="let item of lstWithdrawalRequests.slice().reverse()">
+               <a [routerLink]="['/admin-withdrawal-details', item._id]" class="link-list-item">
+                <div class="row ">
+                    <div class="col-lg-4">
+                        <div class="col-lg-12">
+                            <div class="d-flex align-items-center">
+                                <img [src]="item.id_User.avatar_Url"
+                                    alt=""
+                                    style="width: 80px; height: 80px; margin-right: 10px; border-radius: 50%;" />
+                                <div class="ms-3">
+                                    <h6 class="">{{item.id_User.name}}</h6>
+                                    <p class="text-muted mb-0">{{item.id_User.email}}</p>
+    
+                                </div>
+                            </div>
+    
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-2 d-flex align-items-center">{{item.date_Transaction | date: 'dd/MM/yyyy HH:mm:ss'}}</div>
+                    <div class="col-lg-3 d-flex align-items-center">{{item.bank_Account}}</div>
+                    <div class="col-lg-2 d-flex align-items-center">{{item.amount_Coins*1000 |  currency:'VND':''}} ₫</div>
+                    <div class="col-lg-1 d-flex align-items-center"><span class="badge" [ngClass]="{'badge-success' : item.status==='Đã gửi', 'badge-warning' : item.status==='Đang chờ' }">{{item.status}}</span></div>               
+    
+                </div>
+               </a>
+            <hr>
+                
+            </div>
+            <!-- noti-item -->
+
+            
+
+        </div>
+       </div>
+
+       <ng-template #emtyData>
+        <div style="padding: 10px;">
+            <h3>Không tìm thấy dữ liệu</h3>
+        </div>
+    </ng-template>
+
+    </main>
+</div>
+
+

@@ -34,6 +34,8 @@ export class HomePagesComponent implements OnInit {
     window.scrollTo(0, 0);
 
   }
+
+  
   
 
 }

@@ -5,20 +5,5 @@
     background-color: var(--primary-color);
     color: #fff;
 }
-.noti-link{
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-.noti-item{
-    border: 1px solid rgb(214, 214, 214);
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    margin: 10px 20px;
-}
-.unread-noti{
-    border-left: 10px solid var(--primary-color);
-    background-color: rgb(230, 230, 230);
-}
+
 

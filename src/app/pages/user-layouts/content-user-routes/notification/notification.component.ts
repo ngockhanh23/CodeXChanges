@@ -63,7 +63,7 @@ export class NotificationComponent implements OnInit{
       case 1  : this.router.navigate(['/revenues']); break;
       case 2  : this.router.navigate(['/get-users-bought-product-list']); break;
       case 3  : this.router.navigate(['/get-products-upload-user']); break;
-      // case 4  : this.router.navigate(['/revenues']); break;
+      case 4  : this.router.navigate(['/withdrawal']); break;
       // case 5  : this.router.navigate(['/revenues']); break;
       // case 6  : this.router.navigate(['/revenues']); break;
 

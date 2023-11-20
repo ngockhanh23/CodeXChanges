@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { UserServices } from 'src/services/users-services';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
@@ -41,5 +42,10 @@ export class HeaderComponent implements OnInit{
   countUnreadNotifications() {
     const unreadNotifications = this.userLogin.notification.filter((notification : any) => !notification.status_Notification);
     return unreadNotifications.length;
+  }
+  GetProductBySearchKey(form: NgForm){
+    if(form.valid){
+      this.router.navigate(['search-results',form.value.search_Key]);
+    }
   }
 }

@@ -11,7 +11,7 @@
         <div class="form-inline">
             <small style="margin-right: 10px;">Link download :</small>
             <input class="form-control mr-sm-2" [value]="data.download_Link">
-            <a [href]="data.download_Link" class="btn btn-download-access my-2 my-sm-0">Truy cập nhanh</a>
+            <button (click)="openDownloadLink()" class="btn btn-download-access my-2 my-sm-0">Truy cập nhanh</button>
         </div>
         </div>
     </div>

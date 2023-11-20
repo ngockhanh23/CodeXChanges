@@ -7,6 +7,7 @@ import { ConfirmationDialogComponent } from 'src/app/confirmation-dialog/confirm
 import { DialogService } from 'src/services/dialog';
 import { DownloadDialogComponent } from './download-dialog/download-dialog.component';
 import { NgForm } from '@angular/forms';
+import { RecaptchaDialogComponent } from './recaptcha-dialog/recaptcha-dialog.component';
 
 @Component({
   selector: 'app-product-details',
@@ -65,6 +66,9 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
+  openVideoDemo(){
+    window.open(this.codeProd.demo_Video_Link, '_blank');
+  }
 
   //download button event
   onDownloadCodeProductClick() {
@@ -100,7 +104,7 @@ export class ProductDetailsComponent implements OnInit {
     const messageConfirm = 'Bạn có chắc chắn muốn dùng ' + this.codeProd.download_Price + ' xu trong tài khoản của mình để download source code này không ?'
     this.dialogService.openConfirmationDialog(messageConfirm, "Hủy", " Ok").afterClosed().subscribe((result) => {
       if (result) {
-        //confirm download
+        
         const transaction = {
           seller: this.codeProd.user_Upload._id,
           buyer: this.userLogin._id,
@@ -110,25 +114,17 @@ export class ProductDetailsComponent implements OnInit {
           trading_Date: new Date()
         }
 
-        this.userServices.createTransaction(transaction).subscribe((res) => {
+        // this.userServices.createTransaction(transaction).subscribe((res) => {
+        //   this.authServices.getUserById(this.userLogin._id).subscribe((res) =>{
+        //     this.authServices.setUserLogged(res);
+        //     this.userServices.updateNumberOfDownload(this.codeProd).subscribe((res) => {});
+        //     this.downloadLinkDialogShow();
+        //   });
 
-          // this.authServices.setCoinBalanceUser(this.userLogin.coin_Balance - this.codeProd.download_Price)
-          
+        // });
 
-          // // const idProd = this.codeProd
-          // this.userServices.updateNumberOfDownload(this.codeProd).subscribe((res) => {
-          //   console.log(res)
-          // })
-
-          this.authServices.getUserById(this.userLogin._id).subscribe((res) =>{
-            this.authServices.setUserLogged(res);
-            this.userServices.updateNumberOfDownload(this.codeProd).subscribe((res) => {});
-            this.downloadLinkDialogShow()
-
-
-          });
-
-        });
+        this.reCaptchaDialogShow(transaction);
+        
       } else {
         // console.log('Từ chối');
       }
@@ -156,6 +152,17 @@ export class ProductDetailsComponent implements OnInit {
     const dialogRef = this.dialog.open(DownloadDialogComponent, {
 
       data: { download_Link: this.codeProd.download_Link }
+    });
+
+    dialogRef.afterClosed();
+  }
+
+  reCaptchaDialogShow(transaction : any){
+    const dialogRef = this.dialog.open(RecaptchaDialogComponent, {
+      data : {
+        transaction : transaction,
+        downloadLink : this.codeProd.download_Link
+      }
     });
 
     dialogRef.afterClosed();

@@ -21,7 +21,7 @@
                         </div>
 
                         <div class="btn-demo-details">
-                            <button class="btn"><i class="bi bi-play-btn"></i>&emsp;XEM VIDEO DEMO</button>
+                            <button (click)="openVideoDemo()" class="btn"><i class="bi bi-play-btn"></i>&emsp;XEM VIDEO DEMO</button>
                         </div>
 
                     </div>
@@ -112,11 +112,11 @@
                                     <button (click)="onDownloadCodeProductClick()" class="btn btn-download"> <i
                                             class="bi bi-download"></i>
                                         &emsp;DOWNLOAD</button>
-                                    <button class="btn btn-watch-demo"> <i class="bi bi-play-btn-fill"></i>
+                                    <button (click)="openVideoDemo()" class="btn btn-watch-demo"> <i class="bi bi-play-btn-fill"></i>
                                         &emsp;Video
                                         Demo</button>
-                                    <button class="btn btn-watch-demo"> <i class="bi bi-heart"></i> &emsp;Yêu
-                                        thích</button>
+                                    <!-- <button class="btn btn-watch-demo"> <i class="bi bi-heart"></i> &emsp;Yêu
+                                        thích</button> -->
 
                                 </div>
                             </div>
@@ -374,39 +374,7 @@
                         <hr>
                         <!-- end- outstanding item -->
 
-                        <!-- outstanding item -->
-                        <a href="#" class="card-outstanding-item-link" style="text-decoration: none;">
-                            <div class="card-outstanding-product-item">
-                                <img src="https://sharecode.vn/FilesUpload/Code/[vui-long-kiem-tra-lai-link-download]-sharecode-website-ban-hang-my-pham-cuc-dep-95119.jpg"
-                                    alt="">
-
-                                <div class="title-outstanding">
-                                    <h6>website bán hàng mỹ phẩm cực đẹp</h6>
-                                    <div class="rating-average-card">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="bottom-oustanding-details">
-                                <div><span><i class="bi bi-bookmarks"></i></span>
-                                    <span>PHP Laravel</span>
-                                </div>
-                                <div>
-                                    <div style="display: flex">
-                                        <div style="margin-right: 5px;"><i class="bi bi-eye"></i> 2451</div>
-                                        <div><i class="bi bi-download"></i> 24</div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <hr>
-                        <!-- end- outstanding item -->
+                        
                     </div>
 
                 </div>
